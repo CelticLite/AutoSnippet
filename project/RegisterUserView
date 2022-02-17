@@ -65,10 +65,10 @@
         <input type="text" name="password" value="<?php echo $regUser['password'] ?>" />
         <br>
         
-        <input type="hidden" name="custID" value="<?php echo $regUser['customerID'] ?>" />
+        <input type="hidden" name="userID" value="<?php echo $regUser['userID'] ?>" />
         
         <label>&nbsp;</label>
-        <input type="submit" value="Update Customer" />
+        <input type="submit" value="Register" />
         <br>
     </form>
     <p class="last_paragraph">
