@@ -1,0 +1,79 @@
+<!-- Zach's Notes. Obviously needs some variables renamed already changed the value for the form and updateCust to regUser, needs a header and footer, etc. -->
+<!-- Will change all that out once we discuss how we want to write the model and controller. -->
+
+<?php include '../view/header.php'; ?>
+ 
+<main>
+    <h1>Register User</h1>
+    <form action="index.php" method="post" id="aligned">
+        <input type="hidden" name="action" value="register_user">
+
+        <label>First Name:</label>
+        <input type="text" name="firstName" value="<?php echo $regUser['firstName'] ?>" />
+        <br>
+
+        <label>Last Name:</label>
+        <input type="text" name="lastName" value="<?php echo $regUser['lastName'] ?>" />
+        <br>
+
+        <label>Address:</label>
+        <input type="text" name="address" value="<?php echo $regUser['address'] ?>" />
+        <br>
+        
+        <label>City:</label>
+        <input type="text" name="city" value="<?php echo $regUser['city'] ?>" />
+        <br>
+        
+        <label>State:</label>
+        <input type="text" name="state" value="<?php echo $regUser['state'] ?>" />
+        <br>
+        
+        <label>Postal Code:</label>
+        <input type="text" name="postalCode" value="<?php echo $regUser['postalCode'] ?>" />
+        <br>
+
+         <label>Country Code:</label>
+        
+        <select name= 'countryCode'>
+            <?php foreach ($getCountry as $getCountries) : ?>
+                <?php if($updateCust['countryCode'] == $getCountries['countryCode']):?>
+            
+                     <option value="<?php echo $getCountries['countryCode'];?>" selected>
+                         <?php echo $getCountries['countryName']; ?></option>
+
+                      <?php else: ?>
+
+                      <option value="<?php echo $getCountries['countryCode']; ?>" >
+                      
+                         <?php echo $getCountries['countryName']; ?>
+                      </option>
+                    <?endif; ?>
+            <?php endforeach; ?>  
+
+        </select>
+        <br>
+        
+        <label>Phone:</label>
+        <input type="text" name="phone" value="<?php echo $regUser['phone'] ?>" />
+        <br>
+
+        <label>Email:</label>
+        <input type="text" name="email" value="<?php echo $regUser['email'] ?>" />
+        <br>
+                
+        <label>Password:</label>
+        <input type="text" name="password" value="<?php echo $regUser['password'] ?>" />
+        <br>
+        
+        <input type="hidden" name="custID" value="<?php echo $regUser['customerID'] ?>" />
+        
+        <label>&nbsp;</label>
+        <input type="submit" value="Update Customer" />
+        <br>
+    </form>
+    <p class="last_paragraph">
+        <a href="index.php?action=register_user">Register User</a>
+    </p>
+
+</main>
+<?php include '../view/footer.php'; ?>
