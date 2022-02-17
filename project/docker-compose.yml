@@ -1,0 +1,45 @@
+version: '3.7' 
+
+services: 
+	apache: 
+		build: './apache'
+    restart: always
+		ports:
+			- 80:80
+			- 443:443 
+    networks:
+      - backend
+      - frontend
+    volumes: 
+      - ./public_html:/usr/local/apache2/htdocs 
+      - ./cert/:/usr/local/apache2/cert/
+    depends_on:
+      - php 
+      - db 
+	php:
+		build: './php'
+    restart: always
+    networks:
+      - backend
+    volumes:
+      - ./public_html:/usr/local/apache2/htdocs 
+      #- ./tmp:/usr/local/tmp
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Infected42!
+      POSTGRES_USER: testuser
+      POSTGRES_DB: testdb
+    networks:
+      - backend
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+
+networks:
+  backend:
+  frontend:
