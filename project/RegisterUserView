@@ -9,27 +9,27 @@
         <input type="hidden" name="action" value="register_user">
 
         <label>First Name:</label>
-        <input type="text" name="firstName" value="<?php echo $regUser['firstName'] ?>" />
+        <input type="text" name="firstName" placeholder = "First Name" value="<?php echo $regUser['firstName'] ?>" />
         <br>
 
         <label>Last Name:</label>
-        <input type="text" name="lastName" value="<?php echo $regUser['lastName'] ?>" />
+        <input type="text" name="lastName" placeholder = "Last Name" value="<?php echo $regUser['lastName'] ?>" />
         <br>
 
         <label>Address:</label>
-        <input type="text" name="address" value="<?php echo $regUser['address'] ?>" />
+        <input type="text" name="address" placeholder = "Address" value="<?php echo $regUser['address'] ?>" />
         <br>
         
         <label>City:</label>
-        <input type="text" name="city" value="<?php echo $regUser['city'] ?>" />
+        <input type="text" name="city" placeholder = "City" value="<?php echo $regUser['city'] ?>" />
         <br>
         
         <label>State:</label>
-        <input type="text" name="state" value="<?php echo $regUser['state'] ?>" />
+        <input type="text" name="state" placeholder = "State " value="<?php echo $regUser['state'] ?>" />
         <br>
         
         <label>Postal Code:</label>
-        <input type="text" name="postalCode" value="<?php echo $regUser['postalCode'] ?>" />
+        <input type="text" name="postalCode" placeholder = "Zip or Postal Code" value="<?php echo $regUser['postalCode'] ?>" />
         <br>
 
          <label>Country Code:</label>
@@ -55,23 +55,23 @@
         <br>
         
         <label>Phone:</label>
-        <input type="text" name="phone" value="<?php echo $regUser['phone'] ?>" />
+        <input type="text" name="phone" placeholder = "Phone #" value="<?php echo $regUser['phone'] ?>" />
         <br>
 
         <label>Email:</label>
-        <input type="text" name="email" value="<?php echo $regUser['email'] ?>" />
+        <input type="text" name="email" placeholder = "Email" value="<?php echo $regUser['email'] ?>" />
         <br>
         
          <label>Username:</label>
-        <input type="text" name="username" value="<?php echo $regUser['userName'] ?>" />
+        <input type="text" name="username" placeholder = "Username" value="<?php echo $regUser['userName'] ?>" />
         <br>
                 
         <label>Password:</label>
-        <input type="text" name="password" value="<?php echo $regUser['password'] ?>" />
+        <input type="text" name="password" placeholder = "Password" value="<?php echo $regUser['password'] ?>" />
         <br>
         
          <label>Retype Password:</label>
-        <input type="text" name="passwordConfirm" value="<?php echo $regUser['passwordConfirm'] ?>" />
+        <input type="text" name="passwordConfirm" placeholder = "Retype Password" value="<?php echo $regUser['passwordConfirm'] ?>" />
         <br>
       
 <!-- Rough drop down that will/should/maybe load a team list and let you select one -->
