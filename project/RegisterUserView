@@ -49,6 +49,7 @@
                       </option>
                     <?endif; ?>
             <?php endforeach; ?>  
+            
 
         </select>
         <br>
@@ -60,9 +61,41 @@
         <label>Email:</label>
         <input type="text" name="email" value="<?php echo $regUser['email'] ?>" />
         <br>
+        
+         <label>Username:</label>
+        <input type="text" name="username" value="<?php echo $regUser['userName'] ?>" />
+        <br>
                 
         <label>Password:</label>
         <input type="text" name="password" value="<?php echo $regUser['password'] ?>" />
+        <br>
+        
+         <label>Retype Password:</label>
+        <input type="text" name="passwordConfirm" value="<?php echo $regUser['passwordConfirm'] ?>" />
+        <br>
+      
+<!-- Rough drop down that will/should/maybe load a team list and let you select one -->
+        
+                 <label>Pick your team:</label>
+        
+        <select name= 'teamName'>
+            <?php foreach ($getTeams as $getTeam) : ?>
+                <?php if(regUser['teamNum'] == $getTeams['teamNum']):?>
+            
+                     <option value="<?php echo $getTeams['teamNum'];?>" selected>
+                         <?php echo $getTeams['teamName']; ?></option>
+
+                      <?php else: ?>
+
+                      <option value="<?php echo $getTeams['teamNum']; ?>" >
+                      
+                         <?php echo $$getTeams['teamName']; ?>
+                      </option>
+                    <?endif; ?>
+            <?php endforeach; ?>  
+            
+
+        </select>
         <br>
         
         <input type="hidden" name="userID" value="<?php echo $regUser['userID'] ?>" />
