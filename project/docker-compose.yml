@@ -2,11 +2,11 @@ version: '3.7'
 
 services: 
   apache: 
-		build: './apache'
+    build: './apache'
     restart: always
-		ports:
-			- 80:80
-			- 443:443 
+    ports:
+      - 80:80
+      - 443:443 
     networks:
       - backend
       - frontend
@@ -16,8 +16,8 @@ services:
     depends_on:
       - php 
       - db 
-	php:
-		build: './php'
+  php:
+    build: './php'
     restart: always
     networks:
       - backend
