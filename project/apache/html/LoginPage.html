@@ -1,38 +1,66 @@
-<!-- Just some rought HTML for the login page. Needs formatted still, google login image added, etc... -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Auto Anippet Login Page</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-<?php include '../view/header.php'; ?>
- 
-<main>
-    <h1>Log Into AutoSnippet</h1>
-    <form action="index.php" method="post" id="aligned">
-        <input type="hidden" name="action" value="login_user">
+<div class="wrapper">
+	<div class="header">
+		<div class="top">
 
-        <label>Username:</label>
-        <br>
-        <input type="text" name="code" placeholder="Username"/>
-        <br>
+			<div class="container1">
+				<div class="logo">
+					<img src="AS_Logos/logo1.jpeg" alt="AutoSnippet" style="width: 200px; height: 150px;">
+				</div>
+				<div class="welcome">
+					<p>Welcome to AutoSnippet! <br> Please, Login:</p>
+				</div>
+			</div>
+			<br>
+			<div class="form">
+				<div class="input_field">
+					<input type="text" placeholder="Phone number, username, or email" class="input">
+				</div><br>
+				<div class="input_field">
+					<input type="password" placeholder="Password" class="input">
+				</div>
+				<div class="btn"><a href="#">Log In</a></div>
+			</div>
+			<div class="or">
+				<div class="line"></div>
+				<p>OR</p>
+				<div class="line"></div>
+			</div>
+			<div class="google-btn">
+  			<div class="google-icon-wrapper">
+    			<img class="google-icon-svg" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+  			</div>
+  			<p class="btn-text"><b>Sign in with Google</b></p>
+			</div>
+		<div class="signup">
+			<p>Don't have an account? <a href="#">Register</a></p>
+		</div>
+		</div>
+	</div>
 
-        <label>Password:</label>
-        <br>
-        <input type="text" name="name" placeholder="Password" />
-        <br>
-        <br>
+	<div class="footer">
+		<div class="links">
+			<ul>
+				<li><a href="#">ABOUT US</a></li>
+				<li><a href="#">SUPPORT</a></li>
+				<li><a href="#">PRIVACY</a></li>
+				<li><a href="#">TERMS</a></li>
+				<li><a href="#">LANGUAGE</a></li>
+			</ul>
+		</div>
+		<div class="copyright">
+			© 2022 Auto Snippet
+		</div>
+	</div>
+</div>
 
-        <label></label>
-        <input type="submit" value="Log In" />
-        <br>
-        -------- Or --------
-        <br>
-        <label></label>
-        <!-- Login with google goes here, needs added picture-->
-        <input type="submit" value="Continue With Google" />
-        <br>
-       
-    </form>
-    <p class="last_paragraph">
-        Need to create an account?
-        <a href="index.php?action=registration_page">Register</a>
-    </p>
-
-</main>
-<?php include '../view/footer.php'; ?>
+</body>
+</html>
