@@ -1,0 +1,38 @@
+<!-- Just some rought HTML for the login page. Needs formatted still, google login image added, etc... -->
+
+<?php include '../view/header.php'; ?>
+ 
+<main>
+    <h1>Log Into AutoSnippet</h1>
+    <form action="index.php" method="post" id="aligned">
+        <input type="hidden" name="action" value="login_user">
+
+        <label>Username:</label>
+        <br>
+        <input type="text" name="code" placeholder="Username"/>
+        <br>
+
+        <label>Password:</label>
+        <br>
+        <input type="text" name="name" placeholder="Password" />
+        <br>
+        <br>
+
+        <label></label>
+        <input type="submit" value="Log In" />
+        <br>
+        -------- Or --------
+        <br>
+        <label></label>
+        <!-- Login with google goes here, needs added picture-->
+        <input type="submit" value="Continue With Google" />
+        <br>
+       
+    </form>
+    <p class="last_paragraph">
+        Need to create an account?
+        <a href="index.php?action=registration_page">Register</a>
+    </p>
+
+</main>
+<?php include '../view/footer.php'; ?>

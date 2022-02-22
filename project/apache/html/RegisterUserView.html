@@ -1,0 +1,112 @@
+<!-- Zach's Notes. Obviously needs some variables renamed already changed the value for the form and updateCust to regUser, needs a header and footer, etc. -->
+<!-- Will change all that out once we discuss how we want to write the model and controller. -->
+
+<?php include '../view/header.php'; ?>
+ 
+<main>
+    <h1>Register User</h1>
+    <form action="index.php" method="post" id="aligned">
+        <input type="hidden" name="action" value="register_user">
+
+        <label>First Name:</label>
+        <input type="text" name="firstName" placeholder = "First Name" value="<?php echo $regUser['firstName'] ?>" />
+        <br>
+
+        <label>Last Name:</label>
+        <input type="text" name="lastName" placeholder = "Last Name" value="<?php echo $regUser['lastName'] ?>" />
+        <br>
+
+        <label>Address:</label>
+        <input type="text" name="address" placeholder = "Address" value="<?php echo $regUser['address'] ?>" />
+        <br>
+        
+        <label>City:</label>
+        <input type="text" name="city" placeholder = "City" value="<?php echo $regUser['city'] ?>" />
+        <br>
+        
+        <label>State:</label>
+        <input type="text" name="state" placeholder = "State " value="<?php echo $regUser['state'] ?>" />
+        <br>
+        
+        <label>Postal Code:</label>
+        <input type="text" name="postalCode" placeholder = "Zip or Postal Code" value="<?php echo $regUser['postalCode'] ?>" />
+        <br>
+
+         <label>Country Code:</label>
+        
+        <select name= 'countryCode'>
+            <?php foreach ($getCountry as $getCountries) : ?>
+                <?php if($regUser['countryCode'] == $getCountries['countryCode']):?>
+            
+                     <option value="<?php echo $getCountries['countryCode'];?>" selected>
+                         <?php echo $getCountries['countryName']; ?></option>
+
+                      <?php else: ?>
+
+                      <option value="<?php echo $getCountries['countryCode']; ?>" >
+                      
+                         <?php echo $getCountries['countryName']; ?>
+                      </option>
+                    <?endif; ?>
+            <?php endforeach; ?>  
+            
+
+        </select>
+        <br>
+        
+        <label>Phone:</label>
+        <input type="text" name="phone" placeholder = "Phone #" value="<?php echo $regUser['phone'] ?>" />
+        <br>
+
+        <label>Email:</label>
+        <input type="text" name="email" placeholder = "Email" value="<?php echo $regUser['email'] ?>" />
+        <br>
+        
+         <label>Username:</label>
+        <input type="text" name="username" placeholder = "Username" value="<?php echo $regUser['userName'] ?>" />
+        <br>
+                
+        <label>Password:</label>
+        <input type="text" name="password" placeholder = "Password" value="<?php echo $regUser['password'] ?>" />
+        <br>
+        
+         <label>Retype Password:</label>
+        <input type="text" name="passwordConfirm" placeholder = "Retype Password" value="<?php echo $regUser['passwordConfirm'] ?>" />
+        <br>
+      
+<!-- Rough drop down that will/should/maybe load a team list and let you select one -->
+        
+                 <label>Pick your team:</label>
+        
+        <select name= 'teamName'>
+            <?php foreach ($getTeams as $getTeam) : ?>
+                <?php if(regUser['teamNum'] == $getTeams['teamNum']):?>
+            
+                     <option value="<?php echo $getTeams['teamNum'];?>" selected>
+                         <?php echo $getTeams['teamName']; ?></option>
+
+                      <?php else: ?>
+
+                      <option value="<?php echo $getTeams['teamNum']; ?>" >
+                      
+                         <?php echo $$getTeams['teamName']; ?>
+                      </option>
+                    <?endif; ?>
+            <?php endforeach; ?>  
+            
+
+        </select>
+        <br>
+        
+        <input type="hidden" name="userID" value="<?php echo $regUser['userID'] ?>" />
+        
+        <label>&nbsp;</label>
+        <input type="submit" value="Register" />
+        <br>
+    </form>
+    <p class="last_paragraph">
+        <a href="index.php?action=register_user">Register User</a>
+    </p>
+
+</main>
+<?php include '../view/footer.php'; ?>
