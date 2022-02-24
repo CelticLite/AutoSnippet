@@ -4,6 +4,35 @@
 	<meta charset="UTF-8">
 	<title>Auto Anippet Login Page</title>
 	<link rel="stylesheet" href="main.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://apis.google.com/js/api:client.js"></script>
+  <script>
+  var googleUser = {};
+  var startApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('customBtn'));
+    });
+  };
+
+  function attachSignin(element) {
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+          document.getElementById('name').innerText = "Signed in: " +
+              googleUser.getBasicProfile().getName();
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+  </script>
+
 </head>
 <body>
 
@@ -13,7 +42,7 @@
 
 			<div class="container1">
 				<div class="logo">
-					<img src="AS_Logos/logo1.jpeg" alt="AutoSnippet" style="width: 200px; height: 150px;">
+					<img src="logo1.jpeg" alt="AutoSnippet" style="width: 200px; height: 150px;">
 				</div>
 				<div class="welcome">
 					<p>Welcome to AutoSnippet! <br> Please, Login:</p>
@@ -35,12 +64,15 @@
 				<div class="line"></div>
 			</div>
 		
-			<div class="signup">
-  			<div class="google-icon-wrapper">
-    			<img class="google-icon-svg" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-  			</div>
-  			<p class="btn-text"><b>Sign in with Google</b></p>
-			</div>
+	  <div id="gSignInWrapper">
+    <div id="customBtn" class="customGPlusSignIn">
+      <span class="icon"><img src="google.png" /></span>
+      <span class="buttonText">Sign In With Google</span>
+    </div>
+  </div>
+  <div id="name"></div>
+  <script>startApp();</script>
+
 		<div class="signup">
 			<p>Don't have an account? <a href="#">Register</a></p>
 		</div>
