@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 
 *{
 	margin: 0;
@@ -24,7 +24,7 @@ body{
 
 .top{
 	width: 800;
-	box-shadow: 5px 5px 5px 10px;
+	box-shadow: 5px 5px 5px 5px;
 }
 
 .header .top,
