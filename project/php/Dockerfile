@@ -1,6 +1,5 @@
-FROM php:7.3-rc-fpm-alpine
-RUN apk update; \
-    apk upgrade;
+FROM php:7.3-fpm
+RUN apt-get update
 RUN apt-get install -y libpq-dev
 RUN docker-php-ext-install pdo pdo_pgsql
 RUN docker-php-ext-install pgsql
