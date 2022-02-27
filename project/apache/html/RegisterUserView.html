@@ -1,9 +1,6 @@
-<!-- Zach's Notes. Obviously needs some variables renamed already changed the value for the form and updateCust to regUser, needs a header and footer, etc. -->
-<!-- Will change all that out once we discuss how we want to write the model and controller. -->
+<!-- Zach: Fixed design Reg Page based off the LogIn page Ian did. CSS works on this one. I'll write the PHP stuff for it later or switch back to the other
+one there is a controller and model so the PHP doesn't bug out. -->
 
-<?php include '../view/header.php'; ?>
- 
-   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,112 +8,126 @@
 	<title>Auto Anippet Login Page</title>
 	<link rel="stylesheet" href="main.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://apis.google.com/js/api:client.js"></script>
+  <script>
+  var googleUser = {};
+  var startApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('customBtn'));
+    });
+  };
+
+  function attachSignin(element) {
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+          document.getElementById('name').innerText = "Signed in: " +
+              googleUser.getBasicProfile().getName();
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+  </script>
 
 </head>
-<main>
-    <h1>Register User</h1>
-    <form action="index.php" method="post" id="aligned">
-        <input type="hidden" name="action" value="register_user">
+<body>
 
-        <label>First Name:</label>
-        <input type="text" name="firstName" placeholder = "First Name" value="<?php echo $regUser['firstName'] ?>" />
-        <br>
+<div class="wrapper">
+	<div class="header">
+		<div class="top">
 
-        <label>Last Name:</label>
-        <input type="text" name="lastName" placeholder = "Last Name" value="<?php echo $regUser['lastName'] ?>" />
-        <br>
+			<div class="container1">
+				<div class="logo">
+					<img src="logo1.jpeg" alt="AutoSnippet" style="width: 200px; height: 150px;">
+				</div>
+				<div class="welcome">
+					<p>Welcome to AutoSnippet! <br> Register User:</p>
+				</div>
+			</div>
+			<br>
+			<div class="form">
+                            
+                            	</div><br>
+                                     <div class="input_field">
+                                        <label for="teamselect">Choose your team:</label>
+                                        <select name="teamselect" id="teamselect" class="input_field">
+                                          <option value="volvo">Team A</option>
+                                          <option value="saab">Team B</option>
+                                          <option value="opel">Team C</option>
+                                          <option value="audi">Team D</option>
+                                        </select>
+                                     </div><br>
+                                    <div class="input_field">
+					<input type="text" name="Username" placeholder = "Username" class="input">
+				</div><br>
+                                <div><br>
+				<div class="input_field">
+					<input type="password" placeholder="Password" class="input">
+				</div>
+                                </div><br>
+				<div class="input_field">
+					<input type="password2" placeholder="Retype Password" class="input">
+                                </div><br>
+				<div class="input_field">
+					<input type="text" name="firstName" placeholder = "First Name" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="lastName" placeholder = "Last Name" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="address" placeholder = "Address" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="city" placeholder = "City" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="state" placeholder = "State " class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="postalCode" placeholder = "Zip or Postal Code" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="Country" placeholder = "Country" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="phone" placeholder = "Phone Number" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="Email" placeholder = "Emaik" class="input">
+			
+				<div class="btn"><a href="#">Register User</a></div>
+			</div>
+			
 
-        <label>Address:</label>
-        <input type="text" name="address" placeholder = "Address" value="<?php echo $regUser['address'] ?>" />
-        <br>
-        
-        <label>City:</label>
-        <input type="text" name="city" placeholder = "City" value="<?php echo $regUser['city'] ?>" />
-        <br>
-        
-        <label>State:</label>
-        <input type="text" name="state" placeholder = "State " value="<?php echo $regUser['state'] ?>" />
-        <br>
-        
-        <label>Postal Code:</label>
-        <input type="text" name="postalCode" placeholder = "Zip or Postal Code" value="<?php echo $regUser['postalCode'] ?>" />
-        <br>
+		</div>
+	</div>
 
-         <label>Country Code:</label>
-        
-        <select name= 'countryCode'>
-            <?php foreach ($getCountry as $getCountries) : ?>
-                <?php if($regUser['countryCode'] == $getCountries['countryCode']):?>
-            
-                     <option value="<?php echo $getCountries['countryCode'];?>" selected>
-                         <?php echo $getCountries['countryName']; ?></option>
+	<div class="footer">
+		<div class="links">
+			<ul>
+				<li><a href="#">ABOUT US</a></li>
+				<li><a href="#">SUPPORT</a></li>
+				<li><a href="#">PRIVACY</a></li>
+				<li><a href="#">TERMS</a></li>
+				<li><a href="#">LANGUAGE</a></li>
+			</ul>
+		</div>
+		<div class="copyright">
+			© 2022 Auto Snippet
+		</div>
+	</div>
+</div>
 
-                      <?php else: ?>
-
-                      <option value="<?php echo $getCountries['countryCode']; ?>" >
-                      
-                         <?php echo $getCountries['countryName']; ?>
-                      </option>
-                    <?endif; ?>
-            <?php endforeach; ?>  
-            
-
-        </select>
-        <br>
-        
-        <label>Phone:</label>
-        <input type="text" name="phone" placeholder = "Phone #" value="<?php echo $regUser['phone'] ?>" />
-        <br>
-
-        <label>Email:</label>
-        <input type="text" name="email" placeholder = "Email" value="<?php echo $regUser['email'] ?>" />
-        <br>
-        
-         <label>Username:</label>
-        <input type="text" name="username" placeholder = "Username" value="<?php echo $regUser['userName'] ?>" />
-        <br>
-                
-        <label>Password:</label>
-        <input type="text" name="password" placeholder = "Password" value="<?php echo $regUser['password'] ?>" />
-        <br>
-        
-         <label>Retype Password:</label>
-        <input type="text" name="passwordConfirm" placeholder = "Retype Password" value="<?php echo $regUser['passwordConfirm'] ?>" />
-        <br>
-      
-<!-- Rough drop down that will/should/maybe load a team list and let you select one -->
-        
-                 <label>Pick your team:</label>
-        
-        <select name= 'teamName'>
-            <?php foreach ($getTeams as $getTeam) : ?>
-                <?php if(regUser['teamNum'] == $getTeams['teamNum']):?>
-            
-                     <option value="<?php echo $getTeams['teamNum'];?>" selected>
-                         <?php echo $getTeams['teamName']; ?></option>
-
-                      <?php else: ?>
-
-                      <option value="<?php echo $getTeams['teamNum']; ?>" >
-                      
-                         <?php echo $$getTeams['teamName']; ?>
-                      </option>
-                    <?endif; ?>
-            <?php endforeach; ?>  
-            
-
-        </select>
-        <br>
-        
-        <input type="hidden" name="userID" value="<?php echo $regUser['userID'] ?>" />
-        
-        <label>&nbsp;</label>
-        <input type="submit" value="Register" />
-        <br>
-    </form>
-    <p class="last_paragraph">
-        <a href="index.php?action=register_user">Register User</a>
-    </p>
-
-</main>
-<?php include '../view/footer.php'; ?>
+</body>
+</html>
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
