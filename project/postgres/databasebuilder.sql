@@ -36,3 +36,8 @@ CREATE TABLE teams (
   PRIMARY KEY (teamName)
 )
 
+COPY users(username, password, team, fname, lname, address, city, state, zip, country, phone, email )
+FROM './databse/users.csv'
+DELIMITER ','
+CSV HEADER;
+
