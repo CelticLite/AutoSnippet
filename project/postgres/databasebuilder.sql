@@ -41,3 +41,13 @@ FROM './databse/users.csv'
 DELIMITER ','
 CSV HEADER;
 
+COPY goals(title, description, username, goalType, status, comment, tasks )
+FROM './databse/goals.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY teams(teamName, manager, member1, member2, member3, member4, member5, member6 )
+FROM './databse/teams.csv'
+DELIMITER ','
+CSV HEADER;
+
