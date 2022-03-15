@@ -1,9 +1,6 @@
-
 <?php
-require('../model/database.php');
-
-// haven't made this page yet
-require('../model/user_db.php');
+require('../databaseConnect.php');
+require('../regpagemodel/regModel.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
@@ -13,7 +10,6 @@ if ($action === NULL) {
     }
 }
 
-//pulls calls from form on reg page, form still needs php added to pass to this
 if ($action == reg_user) {
         $teamname = filter_input(INPUT_POST, 'teamname');
         $username = filter_input(INPUT_POST, 'username');
@@ -27,20 +23,18 @@ if ($action == reg_user) {
         $countryCode = filter_input(INPUT_POST, 'countryCode');
         $phone = filter_input(INPUT_POST, 'phone');
         $email = filter_input(INPUT_POST, 'email');
-//field checking
+        
          if ($teamname == NULL || $username == NULL || $password == NULL || $fname == NULL || $lname == NULL || 
                  $address == NULL || $city == NULL || $state == NULL || $postalCode == NULL || $countryCode == NULL || 
                      $phone == NULL || $email == NULL) {
         $error = "Invalid customer data. Check all fields and try again.";
 //        <!-- make error page -->
         include('../errors/error.php');
-        
     } else { 
-// database function that doesn't exist yet
         reg_user($teamname, $username, $password ,$fname,$lname,$address,$city,$state,
                      $postalCode,$countryCode,$phone,$email);
-        $customers = array();
-        include('');
+        //include('');
+        //will be redirected to login page
     }
         
 }
