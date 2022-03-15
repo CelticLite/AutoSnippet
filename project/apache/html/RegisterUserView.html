@@ -1,11 +1,10 @@
-<!-- Zach: Fixed design Reg Page based off the LogIn page Ian did. CSS works on this one. I'll write the PHP stuff for it later or switch back to the other
-one there is a controller and model so the PHP doesn't bug out. -->
+<!-- 3/15 Zach updated regview so the form passes an actual value -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Auto Anippet Login Page</title>
+	<title>Auto Snippet Login Page</title>
 	<link rel="stylesheet" href="main.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
   <script src="https://apis.google.com/js/api:client.js"></script>
@@ -45,13 +44,15 @@ one there is a controller and model so the PHP doesn't bug out. -->
 
 			<div class="container1">
 				<div class="logo">
-					<img src="logo1.jpeg" alt="AutoSnippet" style="width: 200px; height: 150px;">
+					<img src="Images/ASLogo1.jpeg" alt="AutoSnippet" style="width: 200px; height: 150px;">
 				</div>
 				<div class="welcome">
-					<p>Welcome to AutoSnippet! <br> Register User:</p>
+					<p>Welcome to Auto Snippet! <br> Register User:</p>
 				</div>
 			</div>
 			<br>
+                        <form action="index.php" method="post" id="aligned">
+                        <input type="hidden" name="action" value="reg_user">
 			<div class="form">
                             
                             	</div><br>
@@ -65,7 +66,7 @@ one there is a controller and model so the PHP doesn't bug out. -->
                                         </select>
                                      </div><br>
                                     <div class="input_field">
-					<input type="text" name="Username" placeholder = "Username" class="input">
+					<input type="text" name="username" placeholder = "Username" class="input">
 				</div><br>
                                 <div><br>
 				<div class="input_field">
@@ -73,7 +74,7 @@ one there is a controller and model so the PHP doesn't bug out. -->
 				</div>
                                 </div><br>
 				<div class="input_field">
-					<input type="password2" placeholder="Retype Password" class="input">
+					<input type="text" name="password2" placeholder="Retype Password" class="input">
                                 </div><br>
 				<div class="input_field">
 					<input type="text" name="firstName" placeholder = "First Name" class="input">
@@ -100,12 +101,12 @@ one there is a controller and model so the PHP doesn't bug out. -->
 					<input type="text" name="phone" placeholder = "Phone Number" class="input">
 				</div><br>
                                 <div class="input_field">
-					<input type="text" name="Email" placeholder = "Email" class="input">
+					<input type="text" name="email" placeholder = "Email" class="input">
 			
-				<div class="btn"><a href="#">Register User</a></div>
+				<div class="btn"><input type="submit" value="Register User" /></div>
+                                
 			</div>
-			
-
+                        </form>
 		</div>
 	</div>
 
