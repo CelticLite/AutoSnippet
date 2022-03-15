@@ -1,0 +1,35 @@
+<?php
+
+function reg_user($team_name,$user_name,$password,$first_name,$last_name,$address,$city,
+                     $state,$postal_code,$country_code,$phone,$email){
+    global $db;
+    $query = 'INSERT INTO user_accounts SET
+            team_name = :team_name,
+            user_name = :user_name,
+            password = :password
+            firstName = :first_name,
+            lastName = :last_name,
+            address = :address,
+            city = :city,
+            state = :state,
+            postalCode = :postal_code,
+            countryCode = :country_code,
+            phone = :phone,
+            email = :email';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':team_name', $team_name);
+    $statement->bindValue(':user_name', $user_name);
+    $statement->bindValue(':password', $password);
+    $statement->bindValue(':first_name', $first_name);
+    $statement->bindValue(':last_name', $last_name);
+    $statement->bindValue(':address', $address);
+    $statement->bindValue(':city', $city);
+    $statement->bindValue(':state', $state);
+    $statement->bindValue(':postal_code', $postal_code);
+    $statement->bindValue(':country_code', $country_code);
+    $statement->bindValue(':phone', $phone);
+    $statement->bindValue(':email', $email);
+    $statement->bindValue(':password', $password);
+    $statement->execute();
+    $statement->closeCursor();
+}
