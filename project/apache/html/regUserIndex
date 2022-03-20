@@ -1,6 +1,6 @@
 <?php
 require('../databaseConnect.php');
-require('../regpagemodel/regpagemodel.php');
+require('../regModel.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
