@@ -35,8 +35,8 @@ if ($action == reg_user) {
     } else { 
         reg_user($teamname, $username, $password ,$first_name,$last_name,$address,$city,$state,
                      $zip,$country,$phone,$email);
-        header("Location: .");
-        //include('LoginPage.html');
+        //header("Location: .");
+        include('LoginPage.html');
         //will be redirected to login page
     }
         
