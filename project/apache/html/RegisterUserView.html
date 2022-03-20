@@ -51,7 +51,7 @@
 				</div>
 			</div>
 			<br>
-                        <form action="index.php" method="post" id="aligned">
+                        <form action="index.php" method="post">
                         <input type="hidden" name="action" value="reg_user">
 			<div class="form">
                             
@@ -59,10 +59,10 @@
                                      <div class="input_field">
                                         <label for="teamselect">Choose your team:</label>
                                         <select name="teamselect" id="teamselect" class="input_field">
-                                          <option value="volvo">Team A</option>
-                                          <option value="saab">Team B</option>
-                                          <option value="opel">Team C</option>
-                                          <option value="audi">Team D</option>
+                                          <option value="teamA">Team A</option>
+                                          <option value="teamB">Team B</option>
+                                          <option value="teamC">Team C</option>
+                                          <option value="teamD">Team D</option>
                                         </select>
                                      </div><br>
                                     <div class="input_field">
@@ -70,17 +70,17 @@
 				</div><br>
                                 <div><br>
 				<div class="input_field">
-					<input type="password" placeholder="Password" class="input">
+					<input type="password" name = "password" placeholder="Password" class="input">
 				</div>
                                 </div><br>
 				<div class="input_field">
-					<input type="text" name="password2" placeholder="Retype Password" class="input">
+					<input type="password" name="password2" placeholder="Retype Password" class="input">
                                 </div><br>
 				<div class="input_field">
-					<input type="text" name="firstName" placeholder = "First Name" class="input">
+					<input type="text" name="firstname" placeholder = "First Name" class="input">
 				</div><br>
                                 <div class="input_field">
-					<input type="text" name="lastName" placeholder = "Last Name" class="input">
+					<input type="text" name="lastname" placeholder = "Last Name" class="input">
 				</div><br>
                                 <div class="input_field">
 					<input type="text" name="address" placeholder = "Address" class="input">
@@ -92,10 +92,10 @@
 					<input type="text" name="state" placeholder = "State " class="input">
 				</div><br>
                                 <div class="input_field">
-					<input type="text" name="postalCode" placeholder = "Zip or Postal Code" class="input">
+					<input type="text" name="postal" placeholder = "Zip or Postal Code" class="input">
 				</div><br>
                                 <div class="input_field">
-					<input type="text" name="Country" placeholder = "Country" class="input">
+					<input type="text" name="country" placeholder = "Country" class="input">
 				</div><br>
                                 <div class="input_field">
 					<input type="text" name="phone" placeholder = "Phone Number" class="input">
