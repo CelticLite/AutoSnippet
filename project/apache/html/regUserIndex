@@ -1,6 +1,7 @@
+
 <?php
 require('../databaseConnect.php');
-require('../regpagemodel/regModel.php');
+require('../regpagemodel/regpagemodel.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
@@ -9,6 +10,8 @@ if ($action === NULL) {
         $action = 'reg_user';
     }
 }
+
+echo $action;
 
 if ($action == reg_user) {
         $teamname = filter_input(INPUT_POST, 'teamname');
@@ -19,13 +22,13 @@ if ($action == reg_user) {
         $address = filter_input(INPUT_POST, 'address');
         $city = filter_input(INPUT_POST, 'city');
         $state = filter_input(INPUT_POST, 'state');
-        $postalCode = filter_input(INPUT_POST, 'postalCode');
-        $countryCode = filter_input(INPUT_POST, 'countryCode');
+        $postalCode = filter_input(INPUT_POST, 'postal');
+        $countryCode = filter_input(INPUT_POST, 'country');
         $phone = filter_input(INPUT_POST, 'phone');
         $email = filter_input(INPUT_POST, 'email');
         
-         if ($teamname == NULL || $username == NULL || $password == NULL || $fname == NULL || $lname == NULL || 
-                 $address == NULL || $city == NULL || $state == NULL || $postalCode == NULL || $countryCode == NULL || 
+         if ($teamname == NULL || $username == NULL || $password == NULL || $firstname == NULL || $lastname == NULL || 
+                 $address == NULL || $city == NULL || $state == NULL || $postal == NULL || $country == NULL || 
                      $phone == NULL || $email == NULL) {
         $error = "Invalid customer data. Check all fields and try again.";
 //        <!-- make error page -->
@@ -33,7 +36,8 @@ if ($action == reg_user) {
     } else { 
         reg_user($teamname, $username, $password ,$fname,$lname,$address,$city,$state,
                      $postalCode,$countryCode,$phone,$email);
-        //include('');
+        header("Location: .");
+        //include('LoginPage.html');
         //will be redirected to login page
     }
         
