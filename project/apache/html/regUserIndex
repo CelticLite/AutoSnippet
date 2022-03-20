@@ -27,7 +27,7 @@ if ($action == reg_user) {
         $email = filter_input(INPUT_POST, 'email');
         
          if ($teamname == NULL || $username == NULL || $password == NULL || $first_name == NULL || $last_name == NULL || 
-                 $address == NULL || $city == NULL || $state == NULL || $postal == NULL || $country == NULL || 
+                 $address == NULL || $city == NULL || $state == NULL || $zip == NULL || $country == NULL || 
                      $phone == NULL || $email == NULL) {
         $error = "Invalid customer data. Check all fields and try again.";
 //        <!-- make error page -->
