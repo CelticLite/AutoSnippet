@@ -30,9 +30,10 @@ if ($action == NULL) {
         //$action = NULL; 
        // header("Location: .");
     //}
-//} else if ($action == 'show_add_form') {
-  //  include('useradd.php');    
-//} else 
+\\} else 
+    if ($action == 'show_add_form') {
+    include('useradd.php');    
+} else 
     if ($action == 'add_user') {
     $fname = filter_input(INPUT_POST, 'fname');
     $lname = filter_input(INPUT_POST, 'lname');
