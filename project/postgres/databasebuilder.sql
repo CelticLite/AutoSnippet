@@ -11,7 +11,7 @@ CREATE TABLE users (
   phone integer,
   email VARCHAR(255),
   PRIMARY KEY (username)
-)
+);
 
 CREATE TABLE goals (
   title VARCHAR(50),
@@ -22,7 +22,7 @@ CREATE TABLE goals (
   comment text[],
   tasks text[],
   PRIMARY KEY (title)
-)
+);
 
 CREATE TABLE teams (
   teamName VARCHAR(50),
@@ -34,20 +34,20 @@ CREATE TABLE teams (
   member5 VARCHAR(50),
   member6 VARCHAR(50),
   PRIMARY KEY (teamName)
-)
+);
 
-COPY users(username, password, team, fname, lname, address, city, state, zip, country, phone, email )
-FROM './databse/users.csv'
+COPY users
+FROM 'users.csv'
 DELIMITER ','
 CSV HEADER;
 
 COPY goals(title, description, username, goalType, status, comment, tasks )
-FROM './databse/goals.csv'
+FROM 'goals.csv'
 DELIMITER ','
 CSV HEADER;
 
 COPY teams(teamName, manager, member1, member2, member3, member4, member5, member6 )
-FROM './databse/teams.csv'
+FROM 'teams.csv'
 DELIMITER ','
 CSV HEADER;
 

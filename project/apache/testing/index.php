@@ -1,0 +1,56 @@
+<?php
+require('database.php');
+require('user_db.php');
+
+$action = filter_input(INPUT_POST, 'action');
+if ($action == NULL) {
+    $action = filter_input(INPUT_GET, 'action');
+    if ($action == NULL) {
+        $action = 'show_add_form';
+    }
+}
+
+// if ($action == 'list_users') {
+//     $category_id = filter_input(INPUT_GET, 'category_id', 
+//             FILTER_VALIDATE_INT);
+//     if ($category_id == NULL || $category_id == FALSE) {
+//         $category_id = 1;
+//     }
+//     $category_name = get_category_name($category_id);
+//     $categories = get_categories();
+//     $products = get_products_by_category($category_id);
+//     include('product_list.php');
+} else if ($action == 'delete_user') {
+    $username = filter_input(INPUT_POST, 'username');
+    if ($username == NULL || $username == FALSE) {
+        $error = "Missing or incorrect username.";
+        include('error.php');
+    } else { 
+        delete_user($username);
+        $action = NULL; 
+        header("Location: .");
+    }
+} else if ($action == 'show_add_form') {
+    include('useradd.php');    
+} else if ($action == 'add_user') {
+    $fname = filter_input(INPUT_POST, 'fname');
+    $lname = filter_input(INPUT_POST, 'lname');
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $username = filter_input(INPUT_POST, 'username');
+    $password = filter_input(INPUT_POST, 'password');
+    $phone = filter_input(INPUT_POST, 'phone');
+    $address = filter_input(INPUT_POST, 'address');
+    $city = filter_input(INPUT_POST, 'city');
+    $state = filter_input(INPUT_POST, 'state');
+    $zip = filter_input(INPUT_POST, 'zip');
+    $team = filter_input(INPUT_POST, 'country');
+    if ($username == NULL || $username == FALSE) {
+        $error = "Invalid username data. Check all fields and try again.";
+        include('error.php');
+    } else { 
+        add_user($username, $fname, $lname, $email, $password, $phone, $address, $city, $state, $zip, $country);
+        $action = NULL; 
+        header("Location: .");
+    }
+}    
+?>
