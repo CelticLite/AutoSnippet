@@ -6,7 +6,7 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
     if ($action == NULL) {
-        $action = 'show_add_form';
+        $action = 'show_login';
     }
 }
 
@@ -20,21 +20,19 @@ if ($action == NULL) {
 //     $categories = get_categories();
 //     $products = get_products_by_category($category_id);
 //     include('product_list.php');
-//} else if ($action == 'delete_user') {
-  //  $username = filter_input(INPUT_POST, 'username');
-    //if ($username == NULL || $username == FALSE) {
-      //  $error = "Missing or incorrect username.";
-        //include('error.php');
-    //} else { 
-      //  delete_user($username);
-        //$action = NULL; 
-       // header("Location: .");
-    //}
-\\} else 
-    if ($action == 'show_add_form') {
+if ($action == 'delete_user') {
+    $username = filter_input(INPUT_POST, 'username');
+    if ($username == NULL || $username == FALSE) {
+        $error = "Missing or incorrect username.";
+        include('error.php');
+    } else { 
+        delete_user($username);
+        $action = NULL; 
+        header("Location: .");
+    }
+} else if ($action == 'show_add_form') {
     include('useradd.php');    
-} else 
-    if ($action == 'add_user') {
+} else if ($action == 'add_user') {
     $fname = filter_input(INPUT_POST, 'fname');
     $lname = filter_input(INPUT_POST, 'lname');
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
@@ -54,5 +52,34 @@ if ($action == NULL) {
         $action = NULL; 
         header("Location: .");
     }
-}    
+}  else if ($action == 'show_login') {
+    include('login.php');
+}  else if ($action == 'validate_login'){
+    $username = filter_input(INPUT_POST, 'id')
+    $password = filter_input(INPUT_POST, 'password');
+    if ($password == NULL || $password == FALSE ) {
+        $error = "Missing password.";
+        include('error.php');
+    } else { 
+        if($username == NULL || $username == FALSE){
+            $error = "Missing username.";
+            include('error.php');
+        } else {
+            if (valid_login($username, $password)) {
+                include('landing.php');
+            } else {
+                $error = "Incorrect login.";
+                include('error.php');
+            }
+        }
+    } 
+}  else if ($action == 'show_home'){
+    $username = filter_input(INPUT_POST, 'username'); 
+    if ($username == NULL || $username == FALSE) {
+        $error = "Missing or incorrect username.";
+        include('error.php');
+    } else { 
+        include('landing.php');
+    }  
+} 
 ?>
