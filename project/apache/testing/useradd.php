@@ -7,29 +7,31 @@
 
 <div class="wrapper">
 	<div class="header">
-		<div class="top">
+            <div class="top">
 
-			<div class="container1">
-				<div class="logo">
-					<img src="ASLogoV1.1.jpeg" alt="AutoSnippet" style="width: 200px; height: 150px;">
-				</div>
-				<div class="welcome">
-					<p>Welcome to Auto Snippet! <br> Register User:</p>
-				</div>
-			</div>
-			<br>
-                        <form action="index.php" method="post">
-                        <input type="hidden" name="action" value="reg_user">
-			<div class="form">
-                            
-                            	
-                                     
+        <div class="container1">
+                <div class="logo">
+                        <img src="ASLogoV1.1.jpeg" alt="AutoSnippet" style="width: 200px; height: 150px;">
+                </div>
+                <div class="welcome">
+                        <p>Welcome to Auto Snippet! <br> Register User:</p>
+                </div>
+        </div>
+        <div class="form">
+            
 <body>
     <main>
     <h1>Account Sign Up</h1>
     <form action="index.php" method="post" id="add_user_form">
         <input type="hidden" name="action" value="add_user">
-        <div><br>
+       <div class="input_field">
+        <label>Username:</label>
+        <input type="text" name="username" value="" placeholder = "Username" class="input">
+       </div><br>
+	<div class="input_field">
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Password" class="input">
+        </div><br>
 	<div class="input_field">
         <label>First Name:</label>
         <input type="text" name="fname" value="" placeholder = "First Name" class="input">
@@ -42,14 +44,15 @@
         <label>E-Mail:</label>
         <input type="text" name="email" value="" placeholder = "Email" class="input">
         </div><br>
-	<div class="input_field">
+	<!-- Moved these to the top bc Username/Password choice should be prompt 1&2
+        <div class="input_field">
         <label>Username:</label>
         <input type="text" name="username" value="" placeholder = "Username" class="input">
         </div><br>
 	<div class="input_field">
         <label>Password:</label>
         <input type="password" name="password" placeholder="Password" class="input">
-        </div><br>
+        </div><br>-->
 	<div class="input_field">
         <label>Phone Number:</label>
         <input type="text" name="phone" value="" placeholder = "Phone Number" class="input">
