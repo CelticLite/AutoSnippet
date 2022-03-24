@@ -11,7 +11,7 @@ services:
       - backend
       - frontend
     volumes: 
-      - ./public_html:/Users/ross/AS/AutoSnippet/project/apache/testing 
+      - ./apache/testing:/usr/local/apache2/htdocs 
     depends_on:
       - php 
       - db 
@@ -21,7 +21,7 @@ services:
     networks:
       - backend
     volumes:
-      - ./public_html:/Users/ross/AS/AutoSnippet/project/apache/testing
+      - ./apache/testing:/usr/local/apache2/htdocs 
       #- ./tmp:/usr/local/tmp
   db:
     image: postgres
