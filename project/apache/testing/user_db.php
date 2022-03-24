@@ -24,13 +24,14 @@ function delete_user($username) {
 
 function add_user($username, $fname, $lname, $email, $password, $phone, $address, $city, $state, $zip, $country) {
     global $db;
+    $hash = password_hash($password, PASSWORD_DEFAULT)
     $query = 'INSERT INTO users
                  (username, password, first_name, last_name, address, city, state, zip, country, phone, email)
               VALUES
                  (:username, :password, :fname, :lname, :address, :city, :state, :zip, :country, :phone, :email)';
     $statement = $db->prepare($query);
     $statement->bindValue(':username', $username);
-    $statement->bindValue(':password', $password);
+    $statement->bindValue(':password', $hash);
     $statement->bindValue(':fname', $fname);
     $statement->bindValue(':lname', $lname);
     $statement->bindValue(':address', $address);
@@ -42,5 +43,18 @@ function add_user($username, $fname, $lname, $email, $password, $phone, $address
     $statement->bindValue(':email', $email);
     $statement->execute();
     $statement->closeCursor();
+}
+
+function valid_login($username, $password) {
+    global $db; 
+    $query = 'SELECT password FROM users 
+            WHERE username = :username';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':username', $username);
+    $statement->execute();
+    $row = $statement->fetch();
+    $statement->closeCursor();
+    $hash = $row['password'];
+    return password_verify($password, $hash);
 }
 ?>
