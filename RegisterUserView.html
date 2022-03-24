@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Auto Snippet Login Page</title>
+	<link rel="stylesheet" href="main.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://apis.google.com/js/api:client.js"></script>
+  <script>
+  var googleUser = {};
+  var startApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('customBtn'));
+    });
+  };
+
+  function attachSignin(element) {
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+          document.getElementById('name').innerText = "Signed in: " +
+              googleUser.getBasicProfile().getName();
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+  </script>
+
+</head>
+<body>
+
+<div class="wrapper">
+	<div class="header">
+		<div class="top">
+
+			<div class="container1">
+				<div class="logo">
+					<img src="Images/ASLogo1.jpeg" alt="AutoSnippet" style="width: 200px; height: 150px;">
+				</div>
+				<div class="welcome">
+					<p>Welcome to Auto Snippet! <br> Register User:</p>
+				</div>
+			</div>
+			<br>
+                        <form action="index.php" method="post">
+                        <input type="hidden" name="action" value="reg_user">
+			<div class="form">
+                            
+                            	</div><br>
+                                     <div class="input_field">
+                                        <label for="teamselect">Choose your team:</label>
+                                        <select name="teamname" id="teamselect" class="input_field">
+                                          <option value="teamA">Team A</option>
+                                          <option value="teamB">Team B</option>
+                                          <option value="teamC">Team C</option>
+                                          <option value="teamD">Team D</option>
+                                        </select>
+                                     </div><br>
+                                    <div class="input_field">
+					<input type="text" name="username" placeholder = "Username" class="input">
+				</div><br>
+                                <div><br>
+				<div class="input_field">
+					<input type="password" name = "password" placeholder="Password" class="input">
+				</div>
+                                </div><br>
+				<div class="input_field">
+					<input type="password" name="password2" placeholder="Retype Password" class="input">
+                                </div><br>
+				<div class="input_field">
+					<input type="text" name="first_name" placeholder = "First Name" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="last_name" placeholder = "Last Name" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="address" placeholder = "Address" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="city" placeholder = "City" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="state" placeholder = "State " class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="zip" placeholder = "Zip or Postal Code" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="country" placeholder = "Country" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="phone" placeholder = "Phone Number" class="input">
+				</div><br>
+                                <div class="input_field">
+					<input type="text" name="email" placeholder = "Email" class="input">
+			
+				<div class="btn"><input type="submit" value="Register User" /></div>
+                                
+			</div>
+                        </form>
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="links">
+			<ul>
+				<li><a href="#">ABOUT US</a></li>
+				<li><a href="#">SUPPORT</a></li>
+				<li><a href="#">PRIVACY</a></li>
+				<li><a href="#">TERMS</a></li>
+				<li><a href="#">LANGUAGE</a></li>
+			</ul>
+		</div>
+		<div class="copyright">
+			© 2022 Auto Snippet
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
