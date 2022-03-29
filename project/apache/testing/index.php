@@ -1,6 +1,6 @@
 <?php
 require('database.php');
-require('user_db.php');
+require('func_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -81,5 +81,17 @@ if ($action == 'delete_user') {
     } else { 
         include('landing.php');
     }  
-} 
+}  else if ($action == "comment_list"){
+    $comments = get_comments();
+ 
+} else if ($action == "add_comment"){
+    //will need to add username 
+    $uid = filter_input(INPUT_POST, 'uid');
+    $message = filter_input(INPUT_POST, 'message');
+
+    add_comment($uid, $message);
+
+    include('../commentBox/commentbox.php');
+
+}
 ?>
