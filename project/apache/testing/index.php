@@ -1,6 +1,6 @@
 <?php
-require('database.php');
-require('func_db.php');
+require('./model/database.php');
+require('./model/func_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -19,7 +19,8 @@ if ($action == NULL) {
 //     $category_name = get_category_name($category_id);
 //     $categories = get_categories();
 //     $products = get_products_by_category($category_id);
-//     include('product_list.php');
+//     include('./view/product_list.php');
+
 if ($action == 'delete_user') {
     $username = filter_input(INPUT_POST, 'username');
     if ($username == NULL || $username == FALSE) {
@@ -30,9 +31,13 @@ if ($action == 'delete_user') {
         $action = NULL; 
         header("Location: .");
     }
-} else if ($action == 'show_add_form') {
-    include('useradd.php');    
-} else if ($action == 'add_user') {
+} 
+
+else if ($action == 'show_add_form') {
+    include('.view/useradd.php');    
+} 
+
+else if ($action == 'add_user') {
     $fname = filter_input(INPUT_POST, 'fname');
     $lname = filter_input(INPUT_POST, 'lname');
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
@@ -52,36 +57,44 @@ if ($action == 'delete_user') {
         $action = NULL; 
         header("Location: .");
     }
-}  else if ($action == 'show_login') {
-    include('login.php');
-}  else if ($action == 'validate_login'){
+}  
+
+else if ($action == 'show_login') {
+    include('./view/login.php');
+}  
+
+else if ($action == 'validate_login'){
     $username = filter_input(INPUT_POST, 'id')
     $password = filter_input(INPUT_POST, 'password');
     if ($password == NULL || $password == FALSE ) {
         $error = "Missing password.";
-        include('error.php');
+        include('./errors/error.php');
     } else { 
         if($username == NULL || $username == FALSE){
             $error = "Missing username.";
-            include('error.php');
+            include('./errors/error.php');
         } else {
             if (valid_login($username, $password)) {
                 include('landing.php');
             } else {
                 $error = "Incorrect login.";
-                include('error.php');
+                include('./errors/error.php');
             }
         }
     } 
-}  else if ($action == 'show_home'){
+}  
+
+else if ($action == 'show_home'){
     $username = filter_input(INPUT_POST, 'username'); 
     if ($username == NULL || $username == FALSE) {
         $error = "Missing or incorrect username.";
-        include('error.php');
+        include('./errors/error.php');
     } else { 
         include('landing.php');
     }  
-}  else if ($action == "comment_list"){
+}  
+
+else if ($action == "comment_list"){
     $comments = get_comments();
  
 } else if ($action == "add_comment"){
@@ -91,7 +104,7 @@ if ($action == 'delete_user') {
 
     add_comment($uid, $message);
 
-    include('../commentBox/commentbox.php');
+    include('./view/commentbox.php');
 
 }
 ?>
