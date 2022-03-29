@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Auto Anippet Login Page</title>
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" type="text/css" href="./view/style.css?version=51">
+	<link rel="stylesheet" type="text/css" href="./view/main.css?version=51">
 </head>
 <body>
 <div class="wrapper">
