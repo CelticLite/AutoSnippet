@@ -319,3 +319,23 @@ left: 550px;
   border: none;
   background-color: red;
 }
+
+/* Comment Box */
+
+
+.comment-box {
+	width: 845px;
+	padding: 10px;
+	margin-bottom: 4px;
+	background-color: white;
+	border-radius: 4px;
+}
+
+.comment-box p {
+	font-family: arial;
+	font-size: 14px;
+	line-height: 16px;
+	color: #282828;
+	font-weight: 100;
+	
+}
