@@ -64,7 +64,7 @@ else if ($action == 'show_login') {
 }  
 
 else if ($action == 'validate_login'){
-    $username = filter_input(INPUT_POST, 'id')
+    $username = filter_input(INPUT_POST, 'id');
     $password = filter_input(INPUT_POST, 'password');
     if ($password == NULL || $password == FALSE ) {
         $error = "Missing password.";
