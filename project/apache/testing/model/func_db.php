@@ -24,7 +24,7 @@ function delete_user($username) {
 
 function add_user($username, $fname, $lname, $email, $password, $phone, $address, $city, $state, $zip, $country) {
     global $db;
-    $hash = password_hash($password, PASSWORD_DEFAULT)
+    $hash = password_hash($password, PASSWORD_DEFAULT);
     $query = 'INSERT INTO users
                  (username, password, first_name, last_name, address, city, state, zip, country, phone, email)
               VALUES
