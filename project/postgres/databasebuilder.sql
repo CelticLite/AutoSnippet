@@ -36,6 +36,11 @@ CREATE TABLE teams (
   PRIMARY KEY (teamName)
 );
 
+CREATE TABLE comments (
+  uid VARCHAR(50),
+  comment VARCHAR(50),
+  PRIMARY KEY (uid));
+
 COPY users
 FROM 'users.csv'
 DELIMITER ','
