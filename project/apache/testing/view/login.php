@@ -3,8 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Auto Anippet Login Page</title>
-	<link rel="stylesheet" type="text/css" href="./view/style.css?version=51">
+
+	
 	<link rel="stylesheet" type="text/css" href="./view/main.css?version=51">
+
+
 </head>
 <body>
 <div class="wrapper">
@@ -25,8 +28,8 @@
         		<h1>Customer Login</h1>
         		<p>You must login before you can register a product</p>
    
-            		<label for="id"><b>Username:</b></label>
-           		<input type="text" name="id" required/>
+            		<label for="username"><b>Username:</b></label>
+           		<input type="text" name="username" required/>
         
             		<label for="password"><b>Password:</b></label>
             		<input type="text" name="password" required/>
@@ -40,12 +43,14 @@
 				<div class="line"></div>
 			</div>
 
-  		<div id="name"></div>
-		<div class="signup">
-			<p>Don't have an account? <a href="#">Register</a></p>
-		</div>
-		</div>
-		</div>
+		<form action="index.php" method="post" id="short_label_form">
+		<input type="hidden" name="action" value="show_register_page">
+
+
+		<p>Don't have an account?</p> <input type="submit" name="Register" id="login" value="Login" />
+
+
+		</form>
 
 	<div class="footer">
 		<div class="links">
@@ -65,3 +70,5 @@
 
 </body>
 </html>
+
+
