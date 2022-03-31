@@ -62,7 +62,7 @@
 			<?php echo nl2br($comment['message']);?><br><br>
 
 			<form>
-				<input type='hidden' name='uid' value='$comment["uid"]>
+				<input type='hidden' name='uid' value='$comment["uid"]'>
 				<button>Edit:</button>
                                 
 			</form>
