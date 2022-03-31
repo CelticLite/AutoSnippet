@@ -37,6 +37,7 @@ CREATE TABLE teams (
 );
 
 CREATE TABLE comments (
+  cid BIGINT IDENTITY NOT NULL AUTO_INCREMENT,
   uid VARCHAR(50),
   comment VARCHAR(50),
   PRIMARY KEY (uid));
