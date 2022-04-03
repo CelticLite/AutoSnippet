@@ -43,12 +43,12 @@
                 <!-- NEED TO GRAB USER INFO -->
                 <input type='hidden' name='uid' value='Anonymous'>
 
-                <textarea name='message'></textarea><br>
-                <!--<textarea name="message" rows = "10" cols = "142" Placeholder="What's your new weekly goal?"></textarea>-->
+
+                <textarea name="message" rows = "10" cols = "142" Placeholder="What's your new weekly goal?"></textarea>
             
 
           </div>
-            <button type='submit' name='commentSubmit'>Comment</button>
+            <!--<button type='submit' name='commentSubmit'>Comment</button>-->
             <button type='submit' name='commentSubmit' button class = "newGoal__button">Submit</button>
           
 
@@ -78,7 +78,7 @@
 				<button>Edit</button>
                 <button>Reply</button>
                 <br>
-                <!--this (BELOW) is the divider between divs for now for the foreachloop don't delete!-->
+		<!-- this is the div divider line for the foreach comments don't delete the line below!-->
                 ____________________________________________________________________________________________________________________________________
 
 			</form>
