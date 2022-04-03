@@ -2,6 +2,9 @@
 <?php include '../model/database.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
+
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -71,14 +74,31 @@
 
 
 
-
-
 			<form>
 				<input type='hidden' name='uid' value='$comment["uid"]'>
 				<button>Edit</button>
-                <button>Reply</button>
+
+
+
+                <button onclick="replyFunction()">Reply</button>
+
+                <p id="replyText"></p>
+
+                <script>
+                    function replyFunction() {
+                        let text;
+                        let person = prompt("Please enter a reply:", "Reply");
+                        if (person == null || person == "") {
+                            text = "User cancelled the prompt.";
+                        } else {
+                            text = "Reply " + person;
+                        }
+                        document.getElementById("replyText").innerHTML = text;
+                    }
+                </script>
+
                 <br>
-		<!-- this is the div divider line for the foreach comments don't delete the line below!-->
+                <!-- this is the div divider line for the foreach comments don't delete the line below!-->
                 ____________________________________________________________________________________________________________________________________
 
 			</form>
