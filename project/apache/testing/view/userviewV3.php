@@ -82,18 +82,18 @@
 
                 <button onclick="replyFunction()">Reply</button>
 
-                <p id="replyText"></p>
+                <p id="replyTextElem"></p>
 
                 <script>
                     function replyFunction() {
                         let text;
-                        let person = prompt("Please enter a reply:", "Reply");
-                        if (person == null || person == "") {
-                            text = "User cancelled the prompt.";
+                        let replyText = prompt("Please enter a reply:", "Reply");
+                        if (replyText == null || replyText == "") {
+                            text = "User cancelled the reply.";
                         } else {
-                            text = "Reply " + person;
+                            text = "Reply " + replyText;
                         }
-                        document.getElementById("replyText").innerHTML = text;
+                        document.getElementById("replyTextElem").innerHTML = text;
                     }
                 </script>
 
