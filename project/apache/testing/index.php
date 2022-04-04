@@ -99,7 +99,7 @@ else if ($action == "comment_list"){
 
     add_comment($uid, $message);
 
-    include('./view/commentbox.php');
+    include('./view/userpage.php');
 
 }
 ?>
