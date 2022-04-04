@@ -25,7 +25,7 @@
 		<div class="sidebarOption">
 			<h2>Another Option</h2>
 		</div>
-    <div class="lsidebar__input">
+    <div class="lsidebar__input"><br><br>
          <input type="text" placeholder="Search" />
     </div>
   </div>
