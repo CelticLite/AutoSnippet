@@ -82,7 +82,7 @@ left: 550px;
 }
 
 .newGoal__button {
-  background-color: red;
+  background-color: #189BFA;
   border: none;
   color: white;
   font-weight: 900;
@@ -120,7 +120,7 @@ left: 550px;
 .rsidebar__input {
   display: flex;
   align-items: center;
-  background-color: red;
+  background-color: #189BFA;
   padding: 10px;
   border-radius: 20px;
   margin-top: 10px;
@@ -129,5 +129,5 @@ left: 550px;
 
 .rsidebar__input input {
   border: none;
-  background-color: red;
+  background-color: #189BFA;
 }
