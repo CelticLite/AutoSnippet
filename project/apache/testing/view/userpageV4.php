@@ -1,3 +1,5 @@
+<?php include '../model/func_db.php'; ?>
+<?php include '../model/database.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
