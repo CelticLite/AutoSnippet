@@ -205,6 +205,21 @@ body{
   font-size: 20px;
   margin-right: 20px;
 }
+.lsidebar__input {
+  display: flex;
+  align-items: center;
+  background-color: #189BFA;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lsidebar__input input {
+  border: none;
+  background-color: #189BFA;
+}
 
 .bwrapper {
   display: flex;
@@ -270,7 +285,7 @@ left: 550px;
 }
 
 .newGoal__button {
-  background-color: red;
+  background-color: #189BFA;
   border: none;
   color: white;
   font-weight: 900;
@@ -305,20 +320,6 @@ left: 550px;
   flex: 0.3;
 }
 
-.rsidebar__input {
-  display: flex;
-  align-items: center;
-  background-color: red;
-  padding: 10px;
-  border-radius: 20px;
-  margin-top: 10px;
-  margin-left: 20px;
-}
-
-.rsidebar__input input {
-  border: none;
-  background-color: red;
-}
 
 /* Comment Box */
 
