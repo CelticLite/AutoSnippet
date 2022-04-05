@@ -80,7 +80,12 @@
         
         <div class="input_field">
         <label for="teamselect">Choose your team:</label>
-
+	<select name="teamname" id="teamselect" class="input_field">
+          <option value="teamA">Team A</option>
+          <option value="teamB">Team B</option>
+          <option value="teamC">Team C</option>
+          <option value="teamD">Team D</option>
+        </select>
      </div><br>
 
         

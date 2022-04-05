@@ -52,6 +52,7 @@ else if ($action == 'add_user') {
     $phone = filter_input(INPUT_POST, 'phone');
     $email = filter_input(INPUT_POST, 'email', 
         FILTER_VALIDATE_EMAIL);
+    $teamname = filter_input(INPUT_POST, 'teamname');
 
 
     if ($username == NULL || $username == FALSE) {
@@ -59,7 +60,7 @@ else if ($action == 'add_user') {
         include('./errors/error.php');
     } 
     else { 
-        add_user($username, $password, $first_name, $last_name,  $address, $city, $state, $zip, $country, $phone, $email);
+        add_user($username, $password, $first_name, $last_name,  $address, $city, $state, $zip, $country, $phone, $email, $teamname);
         $action = NULL; 
         include('./view/login.php');
     }
