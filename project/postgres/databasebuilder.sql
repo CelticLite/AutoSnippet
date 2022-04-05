@@ -10,6 +10,7 @@ CREATE TABLE users (
   country VARCHAR(2),
   phone integer,
   email VARCHAR(255),
+  teamname VARCHAR(255),
   PRIMARY KEY (username)
 );
 
