@@ -80,6 +80,16 @@
 			<form>
 				<input type='hidden' name='uid' value='$comment["uid"]'>
 				<button>Edit</button>
+				
+				   <form>
+                            <input type='hidden' name='uid' value='$comment["uid"]'>
+                            <button>Edit</button>
+                            <form action="." method="post" >
+                                <input type="hidden" name="action" value ="delete_comment">
+                                <input type="hidden" name="cid"
+                                       value="<?php echo $comment['cid']; ?>" >
+                                <input type="submit" value="Delete" >
+                            </form>
 
 
 
