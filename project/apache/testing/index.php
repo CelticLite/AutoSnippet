@@ -101,6 +101,13 @@ else if ($action == "comment_list"){
     add_comment($uid, $message);
 
     include('./view/userpage.php');
+    
+} else if($action == 'delete_comment'){
+    
+    $cid = filter_input(INPUT_POST, 'cid');
+    delete_comment($cid);
+    header("Location: .?cid=$cid");
+    //include('userviewV2.php');
 
 }
 ?>
