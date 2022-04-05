@@ -6,12 +6,11 @@ services:
     restart: always
     ports:
       - 80:80
-      - 443:443 
     networks:
       - backend
       - frontend
     volumes: 
-      - ./apache/testing:/usr/local/apache2/htdocs 
+      - ./apache/testing:/var/www/html
     depends_on:
       - php 
       - db 
@@ -22,7 +21,6 @@ services:
       - backend
     volumes:
       - ./apache/testing:/usr/local/apache2/htdocs 
-      #- ./tmp:/usr/local/tmp
   db:
     image: postgres
     restart: always
@@ -32,12 +30,6 @@ services:
       POSTGRES_DB: testdb
     networks:
       - backend
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
-
 
 networks:
   backend:
