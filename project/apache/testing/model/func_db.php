@@ -22,13 +22,13 @@ function delete_user($username) {
     $statement->closeCursor();
 }
 
-function add_user($username, $fname, $lname, $email, $password, $phone, $address, $city, $state, $zip, $country) {
+function add_user($username, $fname, $lname, $email, $password, $phone, $address, $city, $state, $zip, $country, $teamname) {
     global $db;
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $query = 'INSERT INTO users
-                 (username, password, first_name, last_name, address, city, state, zip, country, phone, email)
+                 (username, password, first_name, last_name, address, city, state, zip, country, phone, email, teamnname)
               VALUES
-                 (:username, :password, :fname, :lname, :address, :city, :state, :zip, :country, :phone, :email)';
+                 (:username, :password, :fname, :lname, :address, :city, :state, :zip, :country, :phone, :email, :teamname)';
     $statement = $db->prepare($query);
     $statement->bindValue(':username', $username);
     $statement->bindValue(':password', $hash);
@@ -41,6 +41,7 @@ function add_user($username, $fname, $lname, $email, $password, $phone, $address
     $statement->bindValue(':country', $country);
     $statement->bindValue(':phone', $phone);
     $statement->bindValue(':email', $email);
+    $statement->bindValue(':teamname', $teamname);
     $statement->execute();
     $statement->closeCursor();
 }
