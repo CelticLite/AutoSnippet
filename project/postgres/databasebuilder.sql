@@ -41,7 +41,8 @@ CREATE TABLE comments (
   cid BIGINT NOT NULL AUTO_INCREMENT,
   uid VARCHAR(50),
   comment VARCHAR(50),
-  PRIMARY KEY (uid));
+  PRIMARY KEY (uid),
+  team VARCHAR(50));
 
 COPY users
 FROM 'users.csv'
