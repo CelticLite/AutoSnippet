@@ -108,6 +108,10 @@ else if ($action == "comment_list"){
     delete_comment($cid);
     header("Location: .?cid=$cid");
     //include('userviewV2.php');
+    
+}else if ($action == logout){
+    session_destroy();
+    include('./view/login.php');
 
 }
 ?>
