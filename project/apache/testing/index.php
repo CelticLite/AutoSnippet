@@ -86,7 +86,9 @@ else if ($action == 'show_home'){
         $error = "Missing or incorrect username.";
         include('./errors/error.php');
     } else { 
-        include('landing.php');
+     
+        setcookie('username', $username,  0);
+        include('userpage.php');
     }  
 }  
 
@@ -107,7 +109,7 @@ else if ($action == "comment_list"){
     $cid = filter_input(INPUT_POST, 'cid');
     delete_comment($cid);
     header("Location: .?cid=$cid");
-    //include('userviewV2.php');
+    //include('userpage.php');
     
 }else if ($action == logout){
     session_destroy();
