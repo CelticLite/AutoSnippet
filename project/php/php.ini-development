@@ -1051,7 +1051,7 @@ cli_server.color = On
 ; Whether to pool ODBC connections. Can be one of "strict", "relaxed" or "off"
 ; https://php.net/pdo-odbc.connection-pooling
 ;pdo_odbc.connection_pooling=strict
-
+extension=php_pdo_pgsql.dll
 [Pdo_mysql]
 ; Default socket name for local MySQL connects.  If empty, uses the built-in
 ; MySQL defaults.
