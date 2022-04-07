@@ -81,4 +81,15 @@ function get_comments(){
     return $comments;
 
 }
+
+function delete_comment($cid) {
+    global $db;
+    $query = 'DELETE FROM comments
+              WHERE cid = :cid';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':cid', $cid);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
 ?>
