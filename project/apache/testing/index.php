@@ -58,6 +58,12 @@ else if ($action == 'add_user') {
     if ($username == NULL || $username == FALSE) {
         $error = "Invalid username data. Check all fields and try again.";
         include('./errors/error.php');
+       
+    }else if($fname == NULL || $lname == NULL || $email == NULL || $password == NULL || $phone == NULL
+            || $address == NULL || $city == NULL || $state == NULL || $zip == NULL || $teamname == NULL ){
+
+            $error =  "Check all fields and try again.";
+            include('.errors/error.php');
     } 
     else { 
         add_user($username, $password, $first_name, $last_name,  $address, $city, $state, $zip, $country, $phone, $email, $teamname);
@@ -86,7 +92,9 @@ else if ($action == 'show_home'){
         $error = "Missing or incorrect username.";
         include('./errors/error.php');
     } else { 
-        include('landing.php');
+     
+        setcookie('username', $username,  0);
+        include('userpage.php');
     }  
 }  
 
@@ -101,6 +109,17 @@ else if ($action == "comment_list"){
     add_comment($uid, $message);
 
     include('./view/userpage.php');
+    
+} else if($action == 'delete_comment'){
+    
+    $cid = filter_input(INPUT_POST, 'cid');
+    delete_comment($cid);
+    header("Location: .?cid=$cid");
+    //include('./view/userpage.php');
+    
+}else if ($action == logout){
+    session_destroy();
+    include('./view/login.php');
 
 }
 ?>

@@ -22,6 +22,16 @@ function delete_user($username) {
     $statement->closeCursor();
 }
 
+function delete_comment($cid) {
+    global $db;
+    $query = 'DELETE FROM comments
+              WHERE cid = :cid';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':cid', $cid);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
 function add_user($username, $fname, $lname, $email, $password, $phone, $address, $city, $state, $zip, $country, $teamname) {
     global $db;
     $hash = password_hash($password, PASSWORD_DEFAULT);
