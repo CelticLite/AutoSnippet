@@ -60,10 +60,10 @@ else if ($action == 'add_user') {
         include('./errors/error.php');
        
     }else if($fname == NULL || $lname == NULL || $email == NULL || $password == NULL || $phone == NULL
-            || $adress == NULL || $city == NULL || $state == NULL || $zip == NULL || teamname == NULL ){
+            || $address == NULL || $city == NULL || $state == NULL || $zip == NULL || $teamname == NULL ){
 
             $error =  "Check all fields and try again.";
-            include('error.php');
+            include('.errors/error.php');
     } 
     else { 
         add_user($username, $password, $first_name, $last_name,  $address, $city, $state, $zip, $country, $phone, $email, $teamname);
