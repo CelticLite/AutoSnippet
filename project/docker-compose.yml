@@ -5,7 +5,7 @@ services:
     build: './apache'
     restart: always
     ports:
-      - 80:80
+      - "80:80"
     networks:
       - backend
       - frontend
@@ -28,6 +28,8 @@ services:
       POSTGRES_PASSWORD: Infected42!
       POSTGRES_USER: testuser
       POSTGRES_DB: testdb
+    ports:
+      - "5432:5432"
     networks:
       - backend
 

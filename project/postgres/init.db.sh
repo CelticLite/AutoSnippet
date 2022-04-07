@@ -1,9 +1,9 @@
 #!/bin/bash
 psql -U postgres <<-EOSQL
-    CREATE USER docker WITH PASSWORD 'docker';
-    CREATE DATABASE snippet_db;
-    GRANT ALL PRIVILEGES ON DATABASE snippet_db TO docker;
-    \connect snippet_db docker
+    CREATE USER testuser WITH PASSWORD 'Infected42!';
+    CREATE DATABASE testdb;
+    GRANT ALL PRIVILEGES ON DATABASE testdb TO docker;
+    \connect testdb docker
     BEGIN;
         CREATE TABLE DOCUMENT_TEMPLATE(
             ID INTEGER NOT NULL,
