@@ -58,6 +58,12 @@ else if ($action == 'add_user') {
     if ($username == NULL || $username == FALSE) {
         $error = "Invalid username data. Check all fields and try again.";
         include('./errors/error.php');
+       
+    }else if($fname == NULL || $lname == NULL || $email == NULL || $password == NULL || $phone == NULL
+            || $adress == NULL || $city == NULL || $state == NULL || $zip == NULL || teamname == NULL ){
+
+            $error =  "Check all fields and try again.";
+            include('error.php');
     } 
     else { 
         add_user($username, $password, $first_name, $last_name,  $address, $city, $state, $zip, $country, $phone, $email, $teamname);
@@ -109,7 +115,7 @@ else if ($action == "comment_list"){
     $cid = filter_input(INPUT_POST, 'cid');
     delete_comment($cid);
     header("Location: .?cid=$cid");
-    //include('userpage.php');
+    //include('./view/userpage.php');
     
 }else if ($action == logout){
     session_destroy();
