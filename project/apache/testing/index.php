@@ -136,6 +136,8 @@ else if ($action == "comment_list"){
     $uid = filter_input(INPUT_POST, 'uid');
     $message = filter_input(INPUT_POST, 'message');
 
+   //add_comment($_SESSION['username'], $message);
+    
     add_comment($uid, $message);
 
     include('./view/userpageV4.php');  //userpage to userpageV4
