@@ -141,6 +141,14 @@ else if ($action == "comment_list"){
     add_comment($uid, $message);
 
     include('./view/userpageV4.php');  //userpage to userpageV4
+    
+    }else if($action == 'delete_comment'){
+    
+    $cid = filter_input(INPUT_POST, 'cid');
+    delete_comment($cid);
+    include('userpageV4.php');
+
+}
 
 }
 ?>
