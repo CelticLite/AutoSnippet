@@ -121,14 +121,14 @@
 
                         <form>
                             <input type='hidden' name='uid' value='$comment["uid"]'>
-                            <button>Edit</button>
+                            <button button class = "newGoal__button">Edit</button>
                             <form action="index.php" method="post" >
                                 <input type="hidden" name="action" value ="delete_comment">
                                 <input type="hidden" name="cid"
                                        value="<?php echo $comment['cid']; ?>" >
-                                <input type="submit" value="Delete" >
+                                <button input type="submit" value="Delete" button class = "newGoal__button"> Delete </button>
                             </form>
-                            <button onclick="replyFunction()">Reply</button>
+                            <button onclick="replyFunction()" button class = "newGoal__button">Reply</button>
 
 
                             <script>
