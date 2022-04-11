@@ -120,18 +120,18 @@
                             <?php echo nl2br($comment['message']);?><br><br>
 
                         <form>
-							<form action="index.php" method="post">
-								<input type='hidden' name='uid' value='$comment["uid"]'>
-								<input type="hidden" name="cid" value="<?php echo $comment['cid']; ?>" >
-								<div class="dropdown">
-									<button class="newGoal__button">Options</button>
-										<div class="dropdown-content">
-											<a href="#">Edit</a>
-											<a href="#"type="submit" name="action" value="delete_comment">Delete</a>
-											<a href="#" onclick ="replyFunction()">Reply</a>
-										</div>
-									</div> 
-							</form>
+				<form action="index.php" method="post">
+					<input type='hidden' name='uid' value='$comment["uid"]'>
+					<input type="hidden" name="cid" value="<?php echo $comment['cid']; ?>" >
+						<div class="dropdown">
+							<button class="newGoal__button">Options</button>
+								<div class="dropdown-content">
+									<a href="#">Edit</a>
+									<a href="#"type="submit" name="action" value="delete_comment">Delete</a>
+									<a href="#" onclick ="replyFunction()">Reply</a>
+								</div>
+						</div> 
+				</form>
 						
 							
 							
