@@ -92,4 +92,16 @@ function delete_comment($cid) {
     $statement->closeCursor();
 }
 
+function edit_comment($message, $uid, $cid) {
+    global $db;
+    $query = 'UPDATE comments
+            SET message = :message
+            WHERE cid = :cid, uid = :uid';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':message', $message);
+    $statement->bindValue(':cid', $cid);
+    $statement->bindValue(':uid', $uid);
+    $statement->execute();
+    $statement->closeCursor();
+}
 ?>
