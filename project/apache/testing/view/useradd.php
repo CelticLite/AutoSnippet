@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Auto Snippet Login Page</title>
-    <link rel="stylesheet" type="text/css" href="./view/main.css?version=51">
+    <link rel="stylesheet" type="text/css" href="../view/main.css?version=51">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
     <main>
     <h1>Account Sign Up</h1>
     
-    <form action="index.php" method="post" id="short_label_form">
+    <form action="../index.php" method="post" id="short_label_form">
         <input type="hidden" name="action" value="add_user">
        <div class="input_field">
         <label>Username:</label>
