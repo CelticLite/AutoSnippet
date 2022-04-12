@@ -119,7 +119,7 @@
 
                             <?php echo nl2br($comment['message']);?><br><br>
 
-                        <form>
+                        <!--<form>
                             <input type='hidden' name='uid' value='$comment["uid"]'>
                             <button button class = "newGoal__button">Edit</button>
                             <form action="index.php" method="post" >
@@ -128,8 +128,20 @@
                                        value="<?php echo $comment['cid']; ?>" >
                                 <button input type="submit" value="Delete" button class = "newGoal__button"> Delete </button>
                             </form>
-                            <button onclick="replyFunction()" button class = "newGoal__button">Reply</button>
-
+                            <button onclick="replyFunction()" button class = "newGoal__button">Reply</button>-->
+<form>
+                            <form action="index.php" method="post">
+                            <input type='hidden' name='uid' value='$comment["uid"]'>
+                            <input type="hidden" name="cid" value="<?php echo $comment['cid']; ?>" >
+                        <div class="dropdown">
+                            <button class = "newGoal__button" class = "dropdown" >Options</button>
+                            <div class="dropdown-content">
+                                <a href="#">Edit</a>
+                                <a href="#"type="submit" name="action" value="delete_comment">Delete</a>
+                                <a href="#" onclick ="replyFunction()">Reply</a>
+                            </div>
+                        </div>
+                        </form>
 
                             <script>
                                 function replyFunction() {
