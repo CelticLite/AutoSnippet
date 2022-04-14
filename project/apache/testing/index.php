@@ -14,6 +14,34 @@ if ($action == 'show_login') {
     include('./view/login.php');
 }
 
+
+else if ($action == 'login_user'){
+    $username = filter_input(INPUT_POST, 'username');
+    $password = filter_input(INPUT_POST, 'password');
+    
+    $user1 = get_user($username);
+    $pass1 = get_pass($password);
+
+
+    if ($pass1 == NULL || $pass1 == FALSE ) {
+        $error = "Incorrect password.";
+        include('./errors/error.php');
+    } else { 
+        if($user1 == NULL  || $user1 == FALSE){
+            $error = "Incorrect username.";
+            include('./errors/error.php');
+        } else {
+            if ($user1 != NULL && $pass1 !=NULL) {
+                include('./view/userpage.php');
+            } else {
+                $error = "Incorrect login.";
+                include('./errors/error.php');
+            }
+        }
+    }
+}
+
+
 else if ($action == 'validate_login'){
     $username = filter_input(INPUT_POST, 'username');
     $password = filter_input(INPUT_POST, 'password');
