@@ -24,7 +24,7 @@
 			</div>
 			<br>
 		<form action="index.php" method="post" id="short_label_form">
-       			<input type="hidden" name="action" value="validate_login">
+       			<input type="hidden" name="action" value="login_user">
         		<h1>Customer Login</h1>
         		<p>You must login before you can register a product</p>
    
