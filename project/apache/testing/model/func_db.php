@@ -12,6 +12,18 @@ function get_user($username) {
     return $user1;
 }
 
+function get_pass($password) {
+    global $db;
+    $query = 'SELECT * FROM users
+              WHERE password = :password';
+    $statement = $db->prepare($query);
+    $statement->bindValue(":password", $password);
+    $statement->execute();
+    $pass1 = $statement->fetch();
+    $statement->closeCursor();
+    return $pass1;
+}
+
 function delete_user($username) {
     global $db;
     $query = 'DELETE FROM users
