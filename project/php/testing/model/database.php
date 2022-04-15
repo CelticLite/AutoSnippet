@@ -7,7 +7,7 @@ try {
     $db = new PDO($dsn, $username, $password, $options);
 } catch (PDOException $e) {
     $error_message = $e->getMessage();
-    include '../errors/db_error_connect.php';
+    include './errors/db_error_connect.php';
     exit;
 }
 $statement = $db->prepare("SELECT datname FROM pg_database");
