@@ -24,61 +24,29 @@ function get_pass($password) {
     return $pass1;
 }
 
-function delete_user($username) {
-    global $db;
-    $query = 'DELETE FROM users
-              WHERE username = :username';
-    $statement = $db->prepare($query);
-    $statement->bindValue(':username', $username);
-    $statement->execute();
-    $statement->closeCursor();
-}
 
-function delete_comment($cid) {
-    global $db;
-    $query = 'DELETE FROM comments
-              WHERE cid = :cid';
-    $statement = $db->prepare($query);
-    $statement->bindValue(':cid', $cid);
-    $statement->execute();
-    $statement->closeCursor();
-}
 
-function add_user($username, $fname, $lname, $email, $password, $phone, $address, $city, $state, $zip, $country, $teamname) {
+
+function add_user($username, $password, $fname, $lname,  $email, $phone, $address, $city, $state, $zip, $country) {
     global $db;
-    $hash = password_hash($password, PASSWORD_DEFAULT);
-    $query = 'INSERT INTO users
-                 (username, password, first_name, last_name, address, city, state, zip, country, phone, email, teamnname)
+ 
+    $query = 'INSERT INTO users (`username`, `password`, `fname`, `lname`, `email`, `phone`, `address`, `city`, `state`, `zip`, `country`)
               VALUES
-                 (:username, :password, :fname, :lname, :address, :city, :state, :zip, :country, :phone, :email, :teamname)';
+                 (:username, :password, :fname, :lname, :email, :phone, :address, :city, :state, :zip, :country)';
     $statement = $db->prepare($query);
     $statement->bindValue(':username', $username);
-    $statement->bindValue(':password', $hash);
+    $statement->bindValue(':password', $password);
     $statement->bindValue(':fname', $fname);
     $statement->bindValue(':lname', $lname);
+    $statement->bindValue(':email', $email);
+    $statement->bindValue(':phone', $phone);
     $statement->bindValue(':address', $address);
     $statement->bindValue(':city', $city);
     $statement->bindValue(':state', $state);
     $statement->bindValue(':zip', $zip);
     $statement->bindValue(':country', $country);
-    $statement->bindValue(':phone', $phone);
-    $statement->bindValue(':email', $email);
-    $statement->bindValue(':teamname', $teamname);
     $statement->execute();
     $statement->closeCursor();
-}
-
-function valid_login($username, $password) {
-    global $db; 
-    $query = 'SELECT password FROM users 
-            WHERE username = :username';
-    $statement = $db->prepare($query);
-    $statement->bindValue(':username', $username);
-    $statement->execute();
-    $row = $statement->fetch();
-    $statement->closeCursor();
-    $hash = $row['password'];
-    return password_verify($password, $hash);
 }
 
 function add_comment($uid,  $message) {
@@ -93,9 +61,9 @@ function add_comment($uid,  $message) {
 }
 
 function get_comments(){
-    global $db;
-    $queryComments = 'SELECT * FROM comments
-    ORDER BY cid';
+   global $db;
+   $queryComments = 'SELECT * FROM comments
+   ORDER BY cid';
     $statement3 = $db->prepare($queryComments);
     $statement3->execute();
     $comments = $statement3->fetchAll();
@@ -103,4 +71,56 @@ function get_comments(){
     return $comments;
 
 }
+
+function get_cid(){
+   global $db;
+   $query = 'SELECT cid FROM comments
+   WHERE cid = :cid';
+    $statement3 = $db->prepare($query);
+    $statement3->execute();
+    $comments = $statement3->fetchAll();
+    $statement3->closeCursor();
+    return $comments;
+
+}
+
+function delete_comment($cid) {
+    global $db;
+    $query = 'DELETE FROM comments
+              WHERE cid = :cid';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':cid', $cid);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+function get_one_comment($cid){
+   global $db;
+   $query = 'SELECT message FROM comments
+   WHERE cid = :cid';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':cid', $cid);
+    $statement->execute();
+    $comment1 = $statement->fetchAll();
+    $statement->closeCursor();
+    return $comment1;
+}
+
+function editComment($cid, $message){
+    global $db;
+    $query = 'UPDATE comments SET message = :message
+              WHERE cid = :cid';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':cid', $cid);
+    $statement->bindValue(':message', $message);
+    
+    $statement->execute();
+    $statement->closeCursor();
+
+
+}
+
+
+
+
 ?>
