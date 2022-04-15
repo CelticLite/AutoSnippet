@@ -103,5 +103,6 @@ function edit_comment($message, $uid, $cid) {
     $statement->bindValue(':uid', $uid);
     $statement->execute();
     $statement->closeCursor();
+    return $message;
 }
 ?>
