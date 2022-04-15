@@ -1,4 +1,10 @@
 #!/usr/bin/env bash 
+# You are missing parent folders, create them:
+mkdir -p /usr/lib/x86_64-linux-gnu/pkgconfig
+mkdir -p /usr/share/doc/libpq-dev
+mkdir -p /usr/share/man/man1
+
+
 cp /tmp/libpq-dev_files/pg_config /usr/bin/pg_config
 cp -r /tmp/libpq-dev_files/postgresql/ /usr/include/.
 cp /tmp/libpq-dev_files/libpq.a /usr/lib/x86_64-linux-gnu/libpq.a 

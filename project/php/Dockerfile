@@ -2,7 +2,7 @@ FROM php:7.1.23-apache
 ENV http_proxy=http:...
 RUN apt-get update
 RUN apt-get upgrade -y
-COPY ./libpq-dev_files/ /tmp/libpq-dev_files/
+COPY ./libpq-dev_files /tmp/libpq-dev_files
 COPY ./install_libpq_dev.sh /tmp/.
 RUN chmod +x /tmp/install_libpq_dev.sh
 RUN /tmp/install_libpq_dev.sh
