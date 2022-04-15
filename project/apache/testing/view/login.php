@@ -3,9 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Auto Anippet Login Page</title>
-
 	
-	<link rel="stylesheet" type="text/css" href="./view/main.css?version=51">
+	<link rel="stylesheet" type="text/css" href="main.css?version=51">
 
 
 </head>
@@ -23,20 +22,21 @@
 				</div>
 			</div>
 			<br>
-		<form action="index.php" method="post" id="short_label_form">
+		<form action="index.php" method="post">
        			<input type="hidden" name="action" value="login_user">
-        		<h1>Customer Login</h1>
-        		<p>You must login before you can register a product</p>
+        		<h2>Customer Login</h2><br>
+        		<p>You must login before you can register a product:</p><br>
    
-            		<label for="username"><b>Username:</b></label>
+            	<label for="username"><b>Username:</b></label>
            		<input type="text" name="username" required/>
         
             		<label for="password"><b>Password:</b></label>
             		<input type="text" name="password" required/>
 
-            		<input type="submit" name="login" id="login" value="Login" />
+            		<input type="submit" name="login" id="login" value="submit" />
             
-        	</form>
+        </form>
+        
 			<div class="or">
 				<div class="line"></div>
 				<p>OR</p>
@@ -46,8 +46,9 @@
 		<form action="index.php" method="post" id="short_label_form">
 		<input type="hidden" name="action" value="show_register_page">
 
+		<p>Don't have an account?</p> 
 
-		<p>Don't have an account?</p> <input type="submit" name="Register" id="login" value="Login" />
+		<input type="submit" name="Register" id="login" value="Login" />
 
 
 		</form>
@@ -70,5 +71,4 @@
 
 </body>
 </html>
-
 
