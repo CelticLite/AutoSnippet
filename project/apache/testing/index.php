@@ -109,12 +109,14 @@ else if ($action == 'add_user') {
 
 
 else if ($action == "add_comment"){
-	//will need to add username 
-	$uid = filter_input(INPUT_POST, 'uid');
-	$message = filter_input(INPUT_POST, 'message');
+    //will need to add username
+
+    $uid = filter_input(INPUT_POST, 'uid');
+    $message = filter_input(INPUT_POST, 'message');
+    $status = filter_input(INPUT_POST, 'status');
 
 
-    add_comment($uid, $message);
+    add_comment($uid, $message, $status);
     $action == NULL;
     include('./view/userpage.php');
 
