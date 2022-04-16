@@ -144,11 +144,11 @@ else if ($action =="edit_comment"){
 }
 
 else if ($action =="change_comment"){
-        $cid = filter_input(INPUT_POST, 'cid');
-        $message = filter_input(INPUT_POST, 'message');
+    $cid = filter_input(INPUT_POST, 'cid');
+    $message = filter_input(INPUT_POST, 'message');
+    $status = filter_input(INPUT_POST, 'status');
 
-
-        editComment($cid, $message);
+    editComment($cid, $message, $status);
 
 
         include('./view/userpage.php'); 
