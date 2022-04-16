@@ -95,11 +95,12 @@
                     <input type='hidden' name='uid' value='Anonymous'>
                     
                     <!--initial status selector code -->
-                      <select id="status" name="status">
-                        <option value="notcompleted" data-sort="1" font-color='green'>Not Completed</option>
-                        <option value="inprogress" data-sort="2" font-color='yellow'>In Progress</option>
-                        <option value="completed" data-sort="3" font-color='red'>Completed</option>
+                   <select id="status" name="status">
+                        <option value="Not Completed" data-sort="1" font-color='green'>Not Completed</option>
+                        <option value="In Progress" data-sort="2" font-color='yellow'>In Progress</option>
+                        <option value="Completed" data-sort="3" font-color='red'>Completed</option>
                     </select>
+
 
 
                     <textarea name="message" rows = "10" cols = "142" Placeholder="What's your new weekly goal?"></textarea>
