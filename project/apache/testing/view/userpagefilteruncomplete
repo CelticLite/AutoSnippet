@@ -165,7 +165,7 @@
 
 
 
-
+<h1>Not Complete Goals:</h1>
       
         <!-- this is the div divider line for the foreach comments don't delete the line below!-->
         ____________________________________________________________________________________________________________________________________
@@ -183,7 +183,7 @@
 
 
                     <?php
-                    $comments = get_uncompleted_comments();
+                    $comments = get_notcomplete_comments();
                     foreach ($comments as $comment) : ?>
                     <div>
 
