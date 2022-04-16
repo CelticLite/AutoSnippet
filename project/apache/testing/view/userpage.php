@@ -158,27 +158,54 @@
 
 
 
-                        <form method="post" action="index.php">
-                        <input type="hidden" name="action" value ="edit_comment">
+                         <!--<form method="post" action="index.php">
+                                <input type="hidden" name="action" value ="edit_comment">
 
-                        <input type="hidden" name="cid"
-                        value="<?php echo $comment['cid']; ?>">
+                                <input type="hidden" name="cid"
+                                       value="?php echo $comment['cid']; ?>">
 
-                       <input type="submit" value="Edit">
-                        </form>
-
-
-
-                        <form action="index.php" method="post">
-                        <input type="hidden" name="action" value ="delete_comment">
-                            <input type="hidden" name="cid"
-                           value="<?php echo $comment['cid']; ?>">
-        
-                        <input type="submit" value="Delete">
-                        </form>
+                                <input type="submit" value="Edit">
+                            </form>
 
 
-                            <button onclick="replyFunction()" button class = "newGoal__button">Reply</button>
+
+                            <form action="index.php" method="post">
+                                <input type="hidden" name="action" value ="delete_comment">
+                                <input type="hidden" name="cid"
+                                       value="?php echo $comment['cid']; ?>">
+
+                                <input type="submit" value="Delete">
+                            </form>
+
+
+                            <button onclick="replyFunction()" button class = "newGoal__button">Reply</button>-->
+
+                            <form action="index.php" method="post">
+                                <input type='hidden' name='uid' value='$comment["uid"]'>
+                                <input type="hidden" name="cid" value="<?php echo $comment['cid']; ?>" >
+                                <div class="dropdown">
+                                    <button class="newGoal__button">Options</button>
+                                    <div class="dropdown-content">
+                                        <form method="post" action="index.php">
+                                            <input type="hidden" name="action" value ="edit_comment">
+
+                                            <input type="hidden" name="cid"
+                                                   value="<?php echo $comment['cid']; ?>">
+
+                                            <input type="submit" value="                   Edit                    ">
+                                        </form>
+                                        <form action="index.php" method="post">
+                                            <input type="hidden" name="action" value ="delete_comment">
+                                            <input type="hidden" name="cid"
+                                                   value="<?php echo $comment['cid']; ?>">
+
+                                            <input type="submit" value="                   Delete                ">
+                                        </form>
+                                        <!--<a href="#" type="submit" name="action" value="edit_comment_comment">Edit</a>
+                                        <a href="#" type="submit" name="action" value="delete_comment">Delete</a>-->
+                                    </div>
+                                </div>
+                            </form>
 
 
                             <script>
