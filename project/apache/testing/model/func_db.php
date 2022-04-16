@@ -121,18 +121,41 @@ function editComment($cid, $message){
 
 }
 
-function get_comments_by_status($status){
+function get_completed_comments(){
     global $db;
-    $query = 'SELECT * FROM comments WHERE status = :status
+    $queryComments = 'SELECT * FROM comments WHERE status = "Completed"
    ORDER BY cid';
-    $statement3 = $db->prepare($query);
+    $statement3 = $db->prepare($queryComments);
     $statement3->execute();
-    $commentByStatus = $statement3->fetchAll();
+    $comments = $statement3->fetchAll();
     $statement3->closeCursor();
-    return $commentsByStatus;
+    return $comments;
 
 }
 
+function get_uncompleted_comments(){
+    global $db;
+    $queryComments = 'SELECT * FROM comments WHERE status = "Not Completed"
+   ORDER BY cid';
+    $statement3 = $db->prepare($queryComments);
+    $statement3->execute();
+    $comments = $statement3->fetchAll();
+    $statement3->closeCursor();
+    return $comments;
+
+}
+
+function get_inprogress_comments(){
+    global $db;
+    $queryComments = 'SELECT * FROM comments WHERE status = "In Progess"
+   ORDER BY cid';
+    $statement3 = $db->prepare($queryComments);
+    $statement3->execute();
+    $comments = $statement3->fetchAll();
+    $statement3->closeCursor();
+    return $comments;
+
+}
 
 
 
