@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
+<?php include './model/func_db.php'; ?>
+<?php include './model/database.php'; ?>
 
 <head>
     <meta charset="UTF-8" />
