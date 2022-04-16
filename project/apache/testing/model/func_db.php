@@ -121,6 +121,18 @@ function editComment($cid, $message){
 
 }
 
+function get_comments_by_status($status){
+    global $db;
+    $query = 'SELECT * FROM comments WHERE status = :status
+   ORDER BY cid';
+    $statement3 = $db->prepare($query);
+    $statement3->execute();
+    $commentByStatus = $statement3->fetchAll();
+    $statement3->closeCursor();
+    return $commentsByStatus;
+
+}
+
 
 
 
