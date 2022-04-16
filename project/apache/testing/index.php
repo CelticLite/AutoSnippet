@@ -168,15 +168,15 @@ else if ($action == "logout_user"){
     include('.view/userpage.php');
 
 }else if ($action == "filter_uncomplete"){
-    get_comments_by_status("Not Complete")
+    //get_comments_by_status("Not Complete")
     include('.view/userpagefilteruncomplete.php');
 
 }else if ($action == "filter_in_progress"){
-    get_comments_by_status("In Progress")
+    //get_comments_by_status("In Progress")
     include('.view/userpagefilterinprogress.php');
 
 }else if ($action == "filter_done"){
-    get_comments_by_status("Done")
+    //get_comments_by_status("Done")
     include('.view/userpagefilterdone.php');
     
 }
