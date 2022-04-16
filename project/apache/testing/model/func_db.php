@@ -49,13 +49,14 @@ function add_user($username, $password, $fname, $lname,  $email, $phone, $addres
     $statement->closeCursor();
 }
 
-function add_comment($uid,  $message) {
+function add_comment($uid, $message, $status) {
     global $db;
-    $query = 'INSERT INTO comments (uid, message)
-              VALUES (:uid, :message)';
+    $query = 'INSERT INTO comments (uid, message, status)
+              VALUES (:uid, :message, :status)';
     $statement = $db->prepare($query);
     $statement->bindValue(':uid', $uid);
     $statement->bindValue(':message', $message);
+    $statement->bindValue(':status', $status);
     $statement->execute();
     $statement->closeCursor();
 }
