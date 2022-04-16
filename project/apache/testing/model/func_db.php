@@ -106,20 +106,34 @@ function get_one_comment($cid){
     $statement->closeCursor();
     return $comment1;
 }
+//function editComment($cid, $message){
+  //  global $db;
+    //$query = 'UPDATE comments SET message = :message
+      //        WHERE cid = :cid';
+    //$statement = $db->prepare($query);
+    //$statement->bindValue(':cid', $cid);
+    //$statement->bindValue(':message', $message);
+    
+    //$statement->execute();
+    //$statement->closeCursor();
 
-function editComment($cid, $message){
+
+//}
+
+function editComment($cid, $message, $status){
     global $db;
-    $query = 'UPDATE comments SET message = :message
+    $query = 'UPDATE comments SET message = :message AND status = :status
               WHERE cid = :cid';
     $statement = $db->prepare($query);
     $statement->bindValue(':cid', $cid);
     $statement->bindValue(':message', $message);
-    
+    $statement->bindValue(':status', $status);
+
     $statement->execute();
     $statement->closeCursor();
 
-
 }
+
 
 function get_comments_by_status($status){
     global $db;
