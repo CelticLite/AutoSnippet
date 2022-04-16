@@ -183,7 +183,7 @@
 
 
                     <?php
-                    $comments = get_done_comments();
+                    $comments = get_completed_comments();
                     foreach ($comments as $comment) : ?>
                     <div>
 
