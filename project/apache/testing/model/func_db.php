@@ -175,7 +175,7 @@ function get_notcomplete_comments(){
 
 function get_inprogress_comments(){
     global $db;
-    $query = 'SELECT * FROM comments WHERE status = "In Progess"
+    $query = 'SELECT * FROM comments WHERE status = "In Progress"
    ORDER BY cid';
     $statement3 = $db->prepare($query);
     $statement3->execute();
