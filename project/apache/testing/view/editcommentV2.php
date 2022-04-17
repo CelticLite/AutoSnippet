@@ -120,11 +120,13 @@
 
                     <!--<input type="password" name="password" placeholder="Password" class="input">-->
                     <input type='hidden' name='uid' value=''>
+			<p>
                     <select id="status" name="status">
                         <option value="Not Completed" data-sort="1" font-color='green'>Not Completed</option>
                         <option value="In Progress" data-sort="2" font-color='yellow'>In Progress</option>
                         <option value="Completed" data-sort="3" font-color='red'>Completed</option>
                     </select>
+			</p>
                     <?php
 
                     $comment = get_one_comment($cid);
