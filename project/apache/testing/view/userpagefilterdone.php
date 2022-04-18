@@ -28,86 +28,28 @@
         <form action="index.php" method="post">
             <input type="hidden" name="action" value ="filter_all">
 
-            <!--<select id="filterfeed" name="filterfeed">
-                <option value="all" data-sort="0" font-color='red'>All</option>
-                <option value="notcompleted" data-sort="1" font-color='green'>Not Completed</option>
-                <option value="inprogress" data-sort="2" font-color='yellow'>In Progress</option>
-                <option value="completed" data-sort="3" font-color='red'>Completed</option>
-            </select>
-            <br>-->
             <button type='submit' button class = "newGoal__button">All</button>
         </form>
         <form action="index.php" method="post">
             <input type="hidden" name="action" value ="filter_uncomplete">
 
-            <!--<select id="filterfeed" name="filterfeed">
-                <option value="all" data-sort="0" font-color='red'>All</option>
-                <option value="notcompleted" data-sort="1" font-color='green'>Not Completed</option>
-                <option value="inprogress" data-sort="2" font-color='yellow'>In Progress</option>
-                <option value="completed" data-sort="3" font-color='red'>Completed</option>
-            </select>
-            <br>-->
             <button type='submit' button class = "newGoal__button">Not Complete</button>
         </form>
         <form action="index.php" method="post">
             <input type="hidden" name="action" value ="filter_in_progress">
 
-            <!--<select id="filterfeed" name="filterfeed">
-                <option value="all" data-sort="0" font-color='red'>All</option>
-                <option value="notcompleted" data-sort="1" font-color='green'>Not Completed</option>
-                <option value="inprogress" data-sort="2" font-color='yellow'>In Progress</option>
-                <option value="completed" data-sort="3" font-color='red'>Completed</option>
-            </select>
-            <br>-->
+
             <button type='submit' button class = "newGoal__button">In Progress</button>
         </form>
         <form action="index.php" method="post">
             <input type="hidden" name="action" value ="filter_done">
 
-            <!--<select id="filterfeed" name="filterfeed">
-                <option value="all" data-sort="0" font-color='red'>All</option>
-                <option value="notcompleted" data-sort="1" font-color='green'>Not Completed</option>
-                <option value="inprogress" data-sort="2" font-color='yellow'>In Progress</option>
-                <option value="completed" data-sort="3" font-color='red'>Completed</option>
-            </select>
-            <br>-->
+
             <button type='submit' button class = "newGoal__button">Done</button>
         </form>
 
         <div class="lsidebar__input"><br><br>
 
-            <script>
-                $('#searcher').quicksearch('table tbody tr', {
-                    'delay': 100,
-                    'bind': 'keyup keydown',
-                    'show': function() {
-                        if ($('#searcher').val() === '') {
-                            return;
-                        }
-                        $(this).addClass('show');
-                    },
-                    'onAfter': function() {
-                        if ($('#searcher').val() === '') {
-                            return;
-                        }
-                        if ($('.show:first').length > 0) {
-                            $('html,body').scrollTop($('.show:first').offset().top);
-                        }
-                    },
-                    'hide': function() {
-                        $(this).removeClass('show');
-                    },
-                    'prepareQuery': function(val) {
-                        return new RegExp(val, "i");
-                    },
-                    'testQuery': function(query, txt, _row) {
-                        return query.test(txt);
-                    }
-                });
-
-                $('#searcher').focus();
-
-            </script>
 
         </div>
     </div>
@@ -201,29 +143,6 @@
                                 <?php echo nl2br($comment['message']);?><br><br>
 
 
-
-                              <!--<form method="post" action="index.php">
-                                   <input type="hidden" name="action" value ="edit_comment">
-
-                                   <input type="hidden" name="cid"
-                                          value="?php echo $comment['cid']; ?>">
-
-                                   <input type="submit" value="Edit">
-                               </form>
-
-
-
-                               <form action="index.php" method="post">
-                                   <input type="hidden" name="action" value ="delete_comment">
-                                   <input type="hidden" name="cid"
-                                          value="?php echo $comment['cid']; ?>">
-
-                                   <input type="submit" value="Delete">
-                               </form>
-
-
-                               <button onclick="replyFunction()" button class = "newGoal__button">Reply</button>-->
-
                             <form action="index.php" method="post">
                                 <input type='hidden' name='uid' value='$comment["uid"]'>
                                 <input type="hidden" name="cid" value="<?php echo $comment['cid']; ?>" >
@@ -252,19 +171,6 @@
                             </form>
 
 
-                            <script>
-                                function replyFunction() {
-                                    let text;
-                                    let replyText = prompt("Please enter a reply:", "Reply");
-                                    if (replyText == null || replyText == "") {
-                                        text = "User cancelled the reply.";
-                                    } else {
-                                        text = "Reply " + replyText;
-                                    }
-                                    document.getElementById("replyTextElem").innerHTML = text;
-                                }
-                            </script>
-                            <p id="replyTextElem"></p>
 
 
 
