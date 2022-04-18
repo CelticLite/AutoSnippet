@@ -42,6 +42,7 @@ CREATE TABLE comments (
   uid VARCHAR(50),
   comment VARCHAR(50),
   status VARCHAR(40),
+  teams VARCHAR(20),
   PRIMARY KEY (uid));
 
 COPY users
