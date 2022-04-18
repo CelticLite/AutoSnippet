@@ -45,7 +45,7 @@
             <input type="hidden" name="action" value ="filter_done">
 
 
-            <button type='submit' button class = "newGoal__button">Done</button>
+            <button type='submit' button class = "newGoal__button">Completed</button>
         </form>
 
         <div class="lsidebar__input"><br><br>
