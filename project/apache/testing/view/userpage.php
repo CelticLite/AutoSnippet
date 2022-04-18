@@ -94,7 +94,8 @@
                     <input type="hidden" name="action" value="add_comment">
                     <!-- NEED TO GRAB USER INFO -->
                 <p>
-                    <input type='hidden' name='uid' value=''>
+                    <input type='hidden' name='uid' value='<?php
+                        echo $_SESSION['username'];?>'>
                     <select id="status" name="status">
                         <option value="Not Completed" data-sort="1" font-color='green'>Not Completed</option>
                         <option value="In Progress" data-sort="2" font-color='yellow'>In Progress</option>
@@ -212,7 +213,7 @@
                                 <?php echo "Comment ID: ".$comment['cid'];?><br>
                                 <?php echo "Status: ".$comment['status'];?><br>
                                 <?php
-                                echo "Username: ".$_SESSION['username'];?><br><br>
+                                echo "Username: ".$comment['uid'];?><br><br>
 
 
 
