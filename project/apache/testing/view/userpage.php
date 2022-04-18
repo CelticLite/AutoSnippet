@@ -55,7 +55,7 @@
 
 
             
-            <button type='submit' button class = "newGoal__button">Done</button>
+            <button type='submit' button class = "newGoal__button">Completed</button>
         </form>
 
     </div>
