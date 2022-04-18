@@ -1,8 +1,7 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
-<?php include './model/func_db.php'; ?>
-<?php include './model/database.php'; ?>
+
 
 <head>
     <meta charset="UTF-8" />
@@ -42,7 +41,7 @@
         <form action="index.php" method="post">
             <input type="hidden" name="action" value ="filter_done">
 
-            <button type='submit' button class = "newGoal__button">Done</button>
+            <button type='submit' button class = "newGoal__button">Completed</button>
         </form>
 
         <div class="lsidebar__input"><br><br>
@@ -106,9 +105,9 @@
 
 
                     <?php endforeach; ?>
-
+<p>
                     <button type='submit' name='submit'>Confirm Edit</button>
-
+			</p>
                 </form>
         </div>
         <!-- Goal ends -->
@@ -269,25 +268,8 @@
                                 </div>
                             </form>
 
-                            <script>
-                                function replyFunction() {
-                                    let text;
-                                    let replyText = prompt("Please enter a reply:", "Reply");
-                                    if (replyText == null || replyText == "") {
-                                        text = "User cancelled the reply.";
-                                    } else {
-                                        text = "Reply " + replyText;
-                                    }
-                                    document.getElementById("replyTextElem").innerHTML = text;
-                                }
-                            </script>
-                            <p id="replyTextElem"></p>
 
 
-
-
-                            <br>
-                            </form>
 
                             </p></div>
                         <!-- this is the div divider line for the foreach comments don't delete the line below!-->
