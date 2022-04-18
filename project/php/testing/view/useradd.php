@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Auto Snippet Login Page</title>
-    <link rel="stylesheet" type="text/css" href="../view/main.css?version=51">
+    <link rel="stylesheet" type="text/css" href="main.css?version=51">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
     <main>
     <h1>Account Sign Up</h1>
     
-    <form action="../index.php" method="post" id="short_label_form">
+    <form action="index.php" method="post" id="short_label_form">
         <input type="hidden" name="action" value="add_user">
        <div class="input_field">
         <label>Username:</label>
@@ -75,22 +75,8 @@
         <label>Country:</label>
         <input type="text" name="country" value="" placeholder = "Country" class="input">
         </div><br>
-	<div class="input_field">
-        <!--<p>What team are you on?</p>-->
-        
-        <div class="input_field">
-        <label for="teamselect">Choose your team:</label>
-	<select name="teamname" id="teamselect" class="input_field">
-          <option value="teamA">Team A</option>
-          <option value="teamB">Team B</option>
-          <option value="teamC">Team C</option>
-          <option value="teamD">Team D</option>
-        </select>
-     </div><br>
 
-        
-        <label>&nbsp;</label>
-        <div class="btn"><input type="submit" value="Add User" /></div>
+        <input type="submit" value="Add User" />
         <br>
     </form>    
     

@@ -2,124 +2,189 @@
 require('./model/database.php');
 require('./model/func_db.php');
 
+$lifetime = 60 * 60 * 24 * 365; //1 year lifetime for cookie
+session_set_cookie_params($lifetime, '/');
+session_start();
+
 $action = filter_input(INPUT_POST, 'action');
-if ($action == NULL) {
+if ($action === NULL) {
     $action = filter_input(INPUT_GET, 'action');
-    if ($action == NULL) {
-        $action = 'show_login';
+    if ($action === NULL) {
+        $action = 'check_login';
     }
+}
+
+if($action == 'check_login'){
+
+    if(isset($_SESSION['username'])){
+    $email = $_SESSION['username'];
+
+    $comments = get_comments();
+
+    include('./view/userpage.php');
+}
+
+        else{include('./view/login.php');}
+      
 }
 
 if ($action == 'show_login') {
     include('./view/login.php');
 }
 
-else if ($action == 'validate_login'){
+else if ($action == 'show_register_page') {
+    include('./view/useradd.php');
+}
+
+else if ($action == 'show_userpage') {
+
+	$comments = get_comments();
+    include('./view/userpage.php');
+}
+
+else if ($action == 'login_user'){
+
+    if(isset($_POST['login'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];    
+        if($username != NULL && $password !=NULL){
+        setcookie('username', $username);
+    }
+    
+    $_SESSION['username'] = $username;
+    }
+
     $username = filter_input(INPUT_POST, 'username');
     $password = filter_input(INPUT_POST, 'password');
-    if ($password == NULL || $password == FALSE ) {
-        $error = "Missing password.";
+    
+    $user1 = get_user($username);
+    $pass1 = get_pass($password);
+
+
+    if ($pass1 == NULL || $pass1 == FALSE ) {
+        $error = "Incorrect password.";
         include('./errors/error.php');
     } else { 
-        if($username == NULL || $username == FALSE){
-            $error = "Missing username.";
+        if($user1 == NULL  || $user1 == FALSE){
+            $error = "Incorrect username.";
             include('./errors/error.php');
         } else {
-            if (valid_login($username, $password)) {
-                include('./view/commentbox.php');
+            if ($user1 != NULL && $pass1 !=NULL) {
+                include('./view/userpage.php');
             } else {
                 $error = "Incorrect login.";
                 include('./errors/error.php');
             }
         }
-    } 
-}  
-
-else if ($action == 'show_register_page'){
-        include './view/useradd.php';
     }
+}
+
+
 
 else if ($action == 'add_user') {
     $username = filter_input(INPUT_POST, 'username');
     $password = filter_input(INPUT_POST, 'password');
-    $first_name = filter_input(INPUT_POST, 'first_name');
-    $last_name = filter_input(INPUT_POST, 'last_name');
+    $fname = filter_input(INPUT_POST, 'fname');
+    $lname = filter_input(INPUT_POST, 'lname');
+    $email = filter_input(INPUT_POST, 'email');
+    $phone = filter_input(INPUT_POST, 'phone');
     $address = filter_input(INPUT_POST, 'address');
     $city = filter_input(INPUT_POST, 'city');
     $state = filter_input(INPUT_POST, 'state');
     $zip = filter_input(INPUT_POST, 'zip');
     $country = filter_input(INPUT_POST, 'country');
-    $phone = filter_input(INPUT_POST, 'phone');
-    $email = filter_input(INPUT_POST, 'email', 
-        FILTER_VALIDATE_EMAIL);
-    $teamname = filter_input(INPUT_POST, 'teamname');
 
 
     if ($username == NULL || $username == FALSE) {
         $error = "Invalid username data. Check all fields and try again.";
         include('./errors/error.php');
-       
-    }else if($fname == NULL || $lname == NULL || $email == NULL || $password == NULL || $phone == NULL
-            || $address == NULL || $city == NULL || $state == NULL || $zip == NULL || $teamname == NULL ){
-
-            $error =  "Check all fields and try again.";
-            include('.errors/error.php');
     } 
     else { 
-        add_user($username, $password, $first_name, $last_name,  $address, $city, $state, $zip, $country, $phone, $email, $teamname);
-        $action = NULL; 
+        add_user($username, $password, $fname, $lname,  $email, $phone, $address, $city, $state, $zip, $country); 
+
         include('./view/login.php');
+    
     }
 }  
 
 
-else if ($action == 'delete_user') {
-    $username = filter_input(INPUT_POST, 'username');
-    if ($username == NULL || $username == FALSE) {
-        $error = "Missing or incorrect username.";
-        include('error.php');
-    } else { 
-        delete_user($username);
-        $action = NULL; 
-        header("Location: .");
-    }
-} 
+else if ($action == "add_comment"){
+    //will need to add username
 
-
-else if ($action == 'show_home'){
-    $username = filter_input(INPUT_POST, 'username'); 
-    if ($username == NULL || $username == FALSE) {
-        $error = "Missing or incorrect username.";
-        include('./errors/error.php');
-    } else { 
-     
-        setcookie('username', $username,  0);
-        include('userpage.php');
-    }  
-}  
-
-else if ($action == "comment_list"){
-    $comments = get_comments();
- 
-} else if ($action == "add_comment"){
-    //will need to add username 
     $uid = filter_input(INPUT_POST, 'uid');
     $message = filter_input(INPUT_POST, 'message');
+    $status = filter_input(INPUT_POST, 'status');
 
-    add_comment($uid, $message);
 
+    add_comment($uid, $message, $status);
+    $action == NULL;
     include('./view/userpage.php');
-    
-} else if($action == 'delete_comment'){
-    
-    $cid = filter_input(INPUT_POST, 'cid');
-    delete_comment($cid);
-    header("Location: .?cid=$cid");
-    //include('./view/userpage.php');
-    
-}else if ($action == logout){
-    session_destroy();
-    include('./view/login.php');
 
 }
-?>
+
+
+else if ($action == "delete_comment"){
+	$cid = filter_input(INPUT_POST, 'cid');
+
+    delete_comment($cid);
+
+
+    include('./view/userpage.php');  
+
+	
+}
+
+else if ($action =="edit_comment"){
+        $cid = filter_input(INPUT_POST, 'cid');
+
+        $comment = get_one_comment($cid);
+
+        include('./view/editcommentV2.php');
+
+}
+
+else if ($action =="change_comment"){
+    $cid = filter_input(INPUT_POST, 'cid');
+    $message = filter_input(INPUT_POST, 'message');
+    $status = filter_input(INPUT_POST, 'status');
+
+    editComment($cid, $message, $status);
+
+
+        include('./view/userpage.php'); 
+
+}
+
+else if ($action =="return_login"){
+        include('./view/login.php');
+
+}
+
+else if ($action == "logout_user"){
+    session_destroy();
+    include('./view/login.php');
+	
+	}
+
+else if ($action == "filter_all"){
+    include('./view/userpage.php');
+
+}
+
+else if ($action == "filter_uncomplete"){
+    //get_comments_by_status("Not Complete")
+    include('./view/userpagefilteruncomplete.php');
+
+}else if ($action == "filter_in_progress"){
+    //get_comments_by_status("In Progress")
+    include('./view/userpagefilterinprogress.php');
+
+}else if ($action == "filter_done"){
+    //get_comments_by_status("Done")
+    include('./view/userpagefilterdone.php');
+    
+}
+		
+			
+
+
