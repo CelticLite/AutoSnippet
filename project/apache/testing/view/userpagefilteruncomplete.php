@@ -118,7 +118,7 @@
 
 
 
-<h2>Not Complete Goals:</h2>
+<h2>Not Complete Goals:</h2><br>
       
         <!-- this is the div divider line for the foreach comments don't delete the line below!-->
         ____________________________________________________________________________________________________________________________________
