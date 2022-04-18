@@ -164,10 +164,14 @@ else if ($action == "logout_user"){
     session_destroy();
     include('./view/login.php');
 	
-	}else if ($action == "all"){
+	}
+
+else if ($action == "filter_all"){
     include('./view/userpage.php');
 
-}else if ($action == "filter_uncomplete"){
+}
+
+else if ($action == "filter_uncomplete"){
     //get_comments_by_status("Not Complete")
     include('./view/userpagefilteruncomplete.php');
 
@@ -180,6 +184,7 @@ else if ($action == "logout_user"){
     include('./view/userpagefilterdone.php');
     
 }
+		
 			
 
 
