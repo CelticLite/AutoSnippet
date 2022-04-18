@@ -376,3 +376,24 @@ left: 550px;
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+
+
+.highlighted
+{
+    background-color: yellow;
+}
+.highlight
+{
+    background-color: #fff34d;
+    -moz-border-radius: 5px; /* FF1+ */
+    -webkit-border-radius: 5px; /* Saf3-4 */
+    border-radius: 5px; /* Opera 10.5, IE 9, Saf5, Chrome */
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* FF3.5+ */
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Saf3.0+, Chrome */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Opera 10.5+, IE 9.0 */
+}
+.highlight
+{
+    padding: 1px 4px;
+    margin: 0 -4px;
+}
