@@ -86,7 +86,8 @@
                            value="<?php echo $comment['status']; ?>">
 
                     <!--<input type="password" name="password" placeholder="Password" class="input">-->
-                    <input type='hidden' name='uid' value=''>
+                    <input type='hidden' name='uid' value='<?php
+                echo $_SESSION['username'];?>'>
 			<p>
                     <select id="status" name="status">
                         <option value="Not Completed" data-sort="1" font-color='green'>Not Completed</option>
