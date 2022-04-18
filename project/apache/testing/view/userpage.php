@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include './model/func_db.php'; ?>
-<?php include './model/database.php'; ?>
+
 
 <head>
     <meta charset="UTF-8" />
@@ -59,11 +58,6 @@
             <button type='submit' button class = "newGoal__button">Done</button>
         </form>
 
-        <div class="lsidebar__input"><br><br>
-
-
-
-        </div>
     </div>
     <!-- Begin Goals Feed -->
     <div class="goals">
@@ -218,7 +212,7 @@
                                 <?php echo "Comment ID: ".$comment['cid'];?><br>
                                 <?php echo "Status: ".$comment['status'];?><br>
                                 <?php
-                                echo $_SESSION['username'];?><br><br>
+                                echo "Username: ".$_SESSION['username'];?><br><br>
 
 
 
@@ -308,3 +302,4 @@
 </div>
 </body>
 </html>
+
