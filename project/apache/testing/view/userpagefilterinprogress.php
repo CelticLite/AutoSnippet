@@ -68,8 +68,8 @@
 
             <div class="goals__input">
 
-                <?php
-                echo $_SESSION['username'];?>
+                <h3> Welcome, <?php
+                    echo $_SESSION['username'];?>.</h3>
 
                 <img
                         src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
