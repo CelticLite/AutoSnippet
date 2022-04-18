@@ -139,7 +139,7 @@ else if ($action =="edit_comment"){
 
         $comment = get_one_comment($cid);
 
-        include('./view/editcomment.php');
+        include('./view/editcommentV2.php');
 
 }
 
