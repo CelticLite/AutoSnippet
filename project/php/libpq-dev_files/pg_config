@@ -1,0 +1,121 @@
+#!/usr/bin/perl
+
+# Perl reimplementation of PostgreSQL's pg_config binary.
+# We provide this as /usr/bin/pg_config to support cross-compilation using
+# libpq-dev. Also, this makes the two installed pg_config copies not conflict
+# via their debugging symbols.
+#
+# This code is released under the terms of the PostgreSQL License.
+# Portions Copyright (c) 1996-2017, PostgreSQL Global Development Group
+# Author: Christoph Berg
+
+use strict;
+use warnings;
+
+# no arguments, print all items
+if (@ARGV == 0) {
+	while (<DATA>) {
+		last if /^$/; # begin of help section
+		print;
+	}
+	exit 0;
+}
+
+# --help or -?
+if (grep {$_ =~ /^(--help|-\?)$/} @ARGV) {
+	while (<DATA>) {
+		last if /^$/; # begin of help section
+	}
+	print; # include empty line in output
+	while (<DATA>) {
+		next if /^Report bugs/; # Skip bug address in the perl version
+		print;
+	}
+	exit 0;
+}
+
+# specific value(s) requested
+my %options;
+my $help;
+while (<DATA>) {
+	last if /^$/; # begin of help section
+	/^(\S+) = (.*)/ or die "malformatted data item";
+	$options{'--' . lc $1} = $2;
+}
+
+foreach my $arg (@ARGV) {
+	unless ($options{$arg}) {
+		print "pg_config: invalid argument: $arg\n";
+		print "Try \"pg_config --help\" for more information.\n";
+		exit 1;
+	}
+	print "$options{$arg}\n";
+}
+
+exit 0;
+
+# The DATA section consists of the `pg_config` output (one KEY = value item per
+# line), and the `pg_config --help` text. The first --help line is empty, which
+# we use to detect the beginning of the help section.
+
+__DATA__
+BINDIR = /usr/lib/postgresql/12/bin
+DOCDIR = /usr/share/doc/postgresql-doc-12
+HTMLDIR = /usr/share/doc/postgresql-doc-12
+INCLUDEDIR = /usr/include/postgresql
+PKGINCLUDEDIR = /usr/include/postgresql
+INCLUDEDIR-SERVER = /usr/include/postgresql/12/server
+LIBDIR = /usr/lib/x86_64-linux-gnu
+PKGLIBDIR = /usr/lib/postgresql/12/lib
+LOCALEDIR = /usr/share/locale
+MANDIR = /usr/share/postgresql/12/man
+SHAREDIR = /usr/share/postgresql/12
+SYSCONFDIR = /etc/postgresql-common
+PGXS = /usr/lib/postgresql/12/lib/pgxs/src/makefiles/pgxs.mk
+CONFIGURE = '--build=x86_64-linux-gnu' '--prefix=/usr' '--includedir=/usr/include' '--mandir=/usr/share/man' '--infodir=/usr/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-silent-rules' '--libdir=/usr/lib/x86_64-linux-gnu' '--libexecdir=/usr/lib/x86_64-linux-gnu' '--disable-maintainer-mode' '--disable-dependency-tracking' '--with-icu' '--with-tcl' '--with-perl' '--with-python' '--with-pam' '--with-openssl' '--with-libxml' '--with-libxslt' 'PYTHON=/usr/bin/python3' '--mandir=/usr/share/postgresql/12/man' '--docdir=/usr/share/doc/postgresql-doc-12' '--sysconfdir=/etc/postgresql-common' '--datarootdir=/usr/share/' '--datadir=/usr/share/postgresql/12' '--bindir=/usr/lib/postgresql/12/bin' '--libdir=/usr/lib/x86_64-linux-gnu/' '--libexecdir=/usr/lib/postgresql/' '--includedir=/usr/include/postgresql/' '--with-extra-version= (Ubuntu 12.9-0ubuntu0.20.04.1)' '--enable-nls' '--enable-integer-datetimes' '--enable-thread-safety' '--enable-tap-tests' '--enable-debug' '--enable-dtrace' '--disable-rpath' '--with-uuid=e2fs' '--with-gnu-ld' '--with-pgport=5432' '--with-system-tzdata=/usr/share/zoneinfo' '--with-llvm' 'LLVM_CONFIG=/usr/bin/llvm-config-10' 'CLANG=/usr/bin/clang-10' '--with-systemd' '--with-selinux' 'MKDIR_P=/bin/mkdir -p' 'TAR=/bin/tar' 'CFLAGS=-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fno-omit-frame-pointer' 'LDFLAGS=-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now' '--with-gssapi' '--with-ldap' '--with-includes=/usr/include/mit-krb5' '--with-libs=/usr/lib/mit-krb5' '--with-libs=/usr/lib/x86_64-linux-gnu/mit-krb5' 'build_alias=x86_64-linux-gnu' 'CPPFLAGS=-Wdate-time -D_FORTIFY_SOURCE=2' 'CXXFLAGS=-g -O2 -fstack-protector-strong -Wformat -Werror=format-security'
+CC = gcc
+CPPFLAGS = -Wdate-time -D_FORTIFY_SOURCE=2 -D_GNU_SOURCE -I/usr/include/libxml2 -I/usr/include/mit-krb5
+CFLAGS = -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -Wno-format-truncation -Wno-stringop-truncation -g -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fno-omit-frame-pointer
+CFLAGS_SL = -fPIC
+LDFLAGS = -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -L/usr/lib/llvm-10/lib -L/usr/lib/x86_64-linux-gnu/mit-krb5 -Wl,--as-needed
+LDFLAGS_EX = 
+LDFLAGS_SL = 
+LIBS = -lpgcommon -lpgport -lpthread -lselinux -lxslt -lxml2 -lpam -lssl -lcrypto -lgssapi_krb5 -lz -ledit -lrt -lcrypt -ldl -lm 
+VERSION = PostgreSQL 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
+
+pg_config provides information about the installed version of PostgreSQL.
+
+Usage:
+  pg_config [OPTION]...
+
+Options:
+  --bindir              show location of user executables
+  --docdir              show location of documentation files
+  --htmldir             show location of HTML documentation files
+  --includedir          show location of C header files of the client
+                        interfaces
+  --pkgincludedir       show location of other C header files
+  --includedir-server   show location of C header files for the server
+  --libdir              show location of object code libraries
+  --pkglibdir           show location of dynamically loadable modules
+  --localedir           show location of locale support files
+  --mandir              show location of manual pages
+  --sharedir            show location of architecture-independent support files
+  --sysconfdir          show location of system-wide configuration files
+  --pgxs                show location of extension makefile
+  --configure           show options given to "configure" script when
+                        PostgreSQL was built
+  --cc                  show CC value used when PostgreSQL was built
+  --cppflags            show CPPFLAGS value used when PostgreSQL was built
+  --cflags              show CFLAGS value used when PostgreSQL was built
+  --cflags_sl           show CFLAGS_SL value used when PostgreSQL was built
+  --ldflags             show LDFLAGS value used when PostgreSQL was built
+  --ldflags_ex          show LDFLAGS_EX value used when PostgreSQL was built
+  --ldflags_sl          show LDFLAGS_SL value used when PostgreSQL was built
+  --libs                show LIBS value used when PostgreSQL was built
+  --version             show the PostgreSQL version
+  -?, --help            show this help, then exit
+
+With no arguments, all known items are shown.
+
+Report bugs to <pgsql-bugs@lists.postgresql.org>.
