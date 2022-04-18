@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include './model/func_db.php'; ?>
-<?php include './model/database.php'; ?>
+
 
 <head>
     <meta charset="UTF-8" />
@@ -192,9 +191,8 @@
 
                                 <?php echo "Comment ID: ".$comment['cid'];?><br>
                                 <?php echo "Status: ".$comment['status'];?><br>
-                                <?php
-                                echo $_SESSION['username'];?><br><br>
-
+                            <?php
+                                echo "Username: ".$_SESSION['username'];?><br><br>
 
 
 
