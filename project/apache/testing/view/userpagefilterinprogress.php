@@ -109,7 +109,7 @@
 
 
 
-<h2>In Progress Goals:</h2>
+<h2>In Progress Goals:</h2><br>
       
         <!-- this is the div divider line for the foreach comments don't delete the line below!-->
         ____________________________________________________________________________________________________________________________________
