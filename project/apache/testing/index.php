@@ -182,6 +182,9 @@ else if ($action == "filter_uncomplete"){
 }else if ($action == "filter_done"){
     //get_comments_by_status("Done")
     include('./view/userpagefilterdone.php');
+	
+}else if ($action == "clear"){
+        include('./view/userpage.php');
     
 }
 		
