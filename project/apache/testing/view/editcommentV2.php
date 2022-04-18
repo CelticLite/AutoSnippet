@@ -18,7 +18,7 @@
             <h2>Home</h2>
         </div>
 
- 
+
         <br><br><br>
 
 
@@ -46,7 +46,7 @@
 
         <div class="lsidebar__input"><br><br>
 
-          
+
 
         </div>
     </div>
@@ -82,48 +82,50 @@
 
                     <input type="hidden" name="cid"
                            value="<?php echo $comment['cid']; ?>">
-                    <input type="hidden" name="cid"
+                    <input type="hidden" name="status"
                            value="<?php echo $comment['status']; ?>">
 
                     <!--<input type="password" name="password" placeholder="Password" class="input">-->
                     <input type='hidden' name='uid' value='<?php
-                echo $_SESSION['username'];?>'>
-			<p>
-                    <select id="status" name="status">
-                        <option value="Not Completed" data-sort="1" font-color='green'>Not Completed</option>
-                        <option value="In Progress" data-sort="2" font-color='yellow'>In Progress</option>
-                        <option value="Completed" data-sort="3" font-color='red'>Completed</option>
-                    </select>
-			</p>
-                    <?php
+                    echo $_SESSION['username'];?>'>
+                    <p>
+                        <select id="status" name="status">
+                            <option value="Not Completed" data-sort="1" font-color='green'>Not Completed</option>
+                            <option value="In Progress" data-sort="2" font-color='yellow'>In Progress</option>
+                            <option value="Completed" data-sort="3" font-color='red'>Completed</option>
+                        </select>
+                    </p>
 
-                    $comment = get_one_comment($cid);
-                    foreach ($comment as $comm) : ?>
+                            <?php
+
+                            $comment = get_one_comment($cid);
+
+                            foreach ($comment as $comm) : ?>
+                                <input type="hidden" name="cid"
+                                       value="<?php echo $comment['cid']; ?>">
 
                         <textarea name='message' id='message' cols="140" rows="10">
+
 				<?php echo ($comm['message']);?>
             </textarea><br>
 
 
                     <?php endforeach; ?>
-<p>
-                    <button type='submit' name='submit'>Confirm Edit</button>
-			</p>
+                    <p>
+                        <button type='submit' button class = "newGoal__button" name='submit'>Confirm Edit</button>
+                    </p>
+                </div>
                 </form>
-        </div>
-        <!-- Goal ends -->
+            </div>
+            <!-- Goal ends -->
 
 
+            <h2>All Goals:</h2><br>
+            <!-- this is the div divider line for the foreach comments don't delete the line below!-->
+            ____________________________________________________________________________________________________________________________________
+            <br>
 
-
-
-
-        <h2>All Goals:</h2><br>
-        <!-- this is the div divider line for the foreach comments don't delete the line below!-->
-        ____________________________________________________________________________________________________________________________________
-        <br>
-
-               <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
             <script type="text/javascript">
                 function searchAndHighlight(searchTerm, selector) {
                     if (searchTerm) {
@@ -176,122 +178,123 @@
             </script>
 
 
-        <body>
+            <body>
 
 
 
-        <!-- Goals feed -->
+            <!-- Goals feed -->
 
-        <form id="form1">
-            <input type="text" id="SearchTxt" />
-            <input type="button" id="SearchBtn" value="Search" />
-            <input type="button" id="NextBtn" value="Next" />
-            <input type="button" id="PreBtn" value="Previous" />
-            <form action="index.php" method="post">
-                <input type="hidden" name="action" value ="clear">
-                <input type="submit" value="Clear">
-            </form>
-        </form>
+            <form id="form1"><p>
 
+                <p><input type="text" id="SearchTxt" />
+               <input type="button" id="SearchBtn" value="Search" />
+                <input type="button" id="NextBtn" value="Next" />
+                <input type="button" id="PreBtn" value="Previous" />
+                <form action="index.php" method="post">
+                    <input type="hidden" name="action" value ="clear">
+                    <input type="submit" value="Clear">
+                </form></p>
             
 
-                <div class = "feed" id="realTimeContents">
-            <table id="table_example">
-                <table>
-                    <tbody>
 
 
-                    <?php
-                    $comments = get_comments();
-                    foreach ($comments as $comment) : ?>
-                    <div>
-
-                        <div class= comment-box><p>
-
-                                <?php echo "Comment ID: ".$comment['cid'];?><br>
-                                <?php echo "Status: ".$comment['status'];?><br>
-                                <?php
-                                        echo "Username: ".$comment['uid'];?><br><br>
+            <div class = "feed" id="realTimeContents">
+                <table id="table_example">
+                    <table>
+                        <tbody>
 
 
+                        <?php
+                        $comments = get_comments();
+                        foreach ($comments as $comment) : ?>
+                        <div>
 
+                            <div class= comment-box><p>
 
-                                <?php echo nl2br($comment['message']);?><br><br>
+                                    <?php echo "Comment ID: ".$comment['cid'];?><br>
+                                    <?php echo "Status: ".$comment['status'];?><br>
+                                    <?php
+                                    echo "Username: ".$comment['uid'];?><br><br>
 
 
 
-                                <!--<form method="post" action="index.php">
-                                    <input type="hidden" name="action" value ="edit_comment">
 
-                                    <input type="hidden" name="cid"
-                                           value="?php echo $comment['cid']; ?>">
-
-                                    <input type="submit" value="Edit">
-                                </form>
+                                    <?php echo nl2br($comment['message']);?><br><br>
 
 
+
+                                    <!--<form method="post" action="index.php">
+                                        <input type="hidden" name="action" value ="edit_comment">
+
+                                        <input type="hidden" name="cid"
+                                               value="?php echo $comment['cid']; ?>">
+
+                                        <input type="submit" value="Edit">
+                                    </form>
+
+
+
+                                    <form action="index.php" method="post">
+                                        <input type="hidden" name="action" value ="delete_comment">
+                                        <input type="hidden" name="cid"
+                                               value="?php echo $comment['cid']; ?>">
+
+                                        <input type="submit" value="Delete">
+                                    </form>
+
+
+                                    <button onclick="replyFunction()" button class = "newGoal__button">Reply</button>-->
 
                                 <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value ="delete_comment">
-                                    <input type="hidden" name="cid"
-                                           value="?php echo $comment['cid']; ?>">
+                                    <input type='hidden' name='uid' value='$comment["uid"]'>
+                                    <input type="hidden" name="cid" value="<?php echo $comment['cid']; ?>" >
+                                    <div class="dropdown">
+                                        <button class="newGoal__button">Options</button>
+                                        <div class="dropdown-content">
+                                            <form method="post" action="index.php">
+                                                <input type="hidden" name="action" value ="edit_comment">
 
-                                    <input type="submit" value="Delete">
+                                                <input type="hidden" name="cid"
+                                                       value="<?php echo $comment['cid']; ?>">
+
+                                                <input type="submit" value="                   Edit                    ">
+                                            </form>
+                                            <form action="index.php" method="post">
+                                                <input type="hidden" name="action" value ="delete_comment">
+                                                <input type="hidden" name="cid"
+                                                       value="<?php echo $comment['cid']; ?>">
+
+                                                <input type="submit" value="                   Delete                ">
+                                            </form>
+                                            <!--<a href="#" type="submit" name="action" value="edit_comment_comment">Edit</a>
+                                            <a href="#" type="submit" name="action" value="delete_comment">Delete</a>-->
+                                        </div>
+                                    </div>
                                 </form>
 
 
-                                <button onclick="replyFunction()" button class = "newGoal__button">Reply</button>-->
-
-                            <form action="index.php" method="post">
-                                <input type='hidden' name='uid' value='$comment["uid"]'>
-                                <input type="hidden" name="cid" value="<?php echo $comment['cid']; ?>" >
-                                <div class="dropdown">
-                                    <button class="newGoal__button">Options</button>
-                                    <div class="dropdown-content">
-                                        <form method="post" action="index.php">
-                                            <input type="hidden" name="action" value ="edit_comment">
-
-                                            <input type="hidden" name="cid"
-                                                   value="<?php echo $comment['cid']; ?>">
-
-                                            <input type="submit" value="                   Edit                    ">
-                                        </form>
-                                        <form action="index.php" method="post">
-                                            <input type="hidden" name="action" value ="delete_comment">
-                                            <input type="hidden" name="cid"
-                                                   value="<?php echo $comment['cid']; ?>">
-
-                                            <input type="submit" value="                   Delete                ">
-                                        </form>
-                                        <!--<a href="#" type="submit" name="action" value="edit_comment_comment">Edit</a>
-                                        <a href="#" type="submit" name="action" value="delete_comment">Delete</a>-->
-                                    </div>
-                                </div>
-                            </form>
 
 
+                                </p></div>
+                            <!-- this is the div divider line for the foreach comments don't delete the line below!-->
+                            ____________________________________________________________________________________________________________________________________
 
+                            <?php endforeach; ?>
+                        </div>
 
-                            </p></div>
-                        <!-- this is the div divider line for the foreach comments don't delete the line below!-->
-                        ____________________________________________________________________________________________________________________________________
+                        </tbody>
+                    </table>
+                    <!--How to handle the live feed - php? JavaScript? - goes here -->
+                    <!-- <h1> You will see your current goals and past goals in this feed</h1> -->
 
-                        <?php endforeach; ?>
-                    </div>
+            </div>
+        </div>
+        <!-- Right Side Bar -->
+        <div class = "rsidebar">
 
-                    </tbody>
-                </table>
-                <!--How to handle the live feed - php? JavaScript? - goes here -->
-                <!-- <h1> You will see your current goals and past goals in this feed</h1> -->
 
         </div>
-    </div>
-    <!-- Right Side Bar -->
-    <div class = "rsidebar">
-
 
     </div>
-
-</div>
 </body>
 </html>
