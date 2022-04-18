@@ -125,11 +125,79 @@
 <br>
 
 
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                function searchAndHighlight(searchTerm, selector) {
+                    if (searchTerm) {
+                        var selector = selector || "#realTimeContents";
+                        var searchTermRegEx = new RegExp(searchTerm, "ig");
+                        var matches = $(selector).text().match(searchTermRegEx);
+                        if (matches != null && matches.length > 0) {
+                            $('.highlighted').removeClass('highlighted');
+                            $span = $('#realTimeContents span');
+                            $span.replaceWith($span.html());
+                            if (searchTerm === "&") {
+                                searchTerm = "&amp;";
+                                searchTermRegEx = new RegExp(searchTerm, "ig");
+                            }
+                            $(selector).html($(selector).html().replace(searchTermRegEx, "<span class='match'>" + searchTerm + "</span>"));
+                            $('.match:first').addClass('highlighted');
+                            var i = 0;
+                            $('#NextBtn').off('click').on('click', function () {
+                                i++;
+                                if (i >= $('.match').length) i = 0;
+                                $('.match').removeClass('highlighted');
+                                $('.match').eq(i).addClass('highlighted');
+                                $('.ui-mobile-viewport').animate({
+                                    scrollTop: $('.match').eq(i).offset().top
+                                }, 300);
+                            });
+                            $('#PreBtn').off('click').on('click', function () {
+                                i--;
+                                if (i < 0) i = $('.match').length - 1;
+                                $('.match').removeClass('highlighted');
+                                $('.match').eq(i).addClass('highlighted');
+                                $('.ui-mobile-viewport').animate({
+                                    scrollTop: $('.match').eq(i).offset().top
+                                }, 300);
+                            });
+                            if ($('.highlighted:first').length) { //if match found, scroll to where the first one appears
+                                $(window).scrollTop($('.highlighted:first').position().top);
+                            }
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                $(document).on('click', '#SearchBtn', function (event) {
+                    $(".highlighted").removeClass("highlighted").removeClass("match");
+                    if (!searchAndHighlight($('#SearchTxt').val())) {
+                        alert("No results found");
+                    }
+                });
+            </script>
+
+
+        <body>
+
+
+
         <!-- Goals feed -->
 
+        <form id="form1">
+            <input type="text" id="SearchTxt" />
+            <input type="button" id="SearchBtn" value="Search" />
+            <input type="button" id="NextBtn" value="Next" />
+            <input type="button" id="PreBtn" value="Previous" />
+            <form action="index.php" method="post">
+                <input type="hidden" name="action" value ="clear">
+                <input type="submit" value="Clear">
+            </form>
+        </form>
 
+            
 
-        <div class = "feed">
+                <div class = "feed" id="realTimeContents">
             <table id="table_example">
                 <table>
                     <tbody>
