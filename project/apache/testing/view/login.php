@@ -24,8 +24,8 @@
 			<br>
 		<form action="index.php" method="post">
        			<input type="hidden" name="action" value="login_user">
-        		<h2>Customer Login</h2><br>
-        		<p>You must login before you can register a product:</p><br>
+        		<h2>User Login</h2><br>
+        		<p>You must login before you can use Auto Snippet:</p><br>
    
             	<label for="username"><b>Username:</b></label>
            		<input type="text" name="username" required/>
