@@ -31,7 +31,7 @@
            		<input type="text" name="username" required/>
         
             		<label for="password"><b>Password:</b></label>
-            		<input type="text" name="password" required/>
+            		<input type="password" name="password" required/>
 
             		<input type="submit" name="login" id="login" value="submit" />
             
@@ -46,9 +46,9 @@
 		<form action="index.php" method="post" id="short_label_form">
 		<input type="hidden" name="action" value="show_register_page">
 
-		<p>Don't have an account?</p> 
+		<p>Don't have an account?</p> <br>
 
-		<input type="submit" name="Register" id="login" value="Login" />
+		<input type="submit" name="Register" id="login" value="Register" />
 
 
 		</form>
