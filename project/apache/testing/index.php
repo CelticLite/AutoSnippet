@@ -135,7 +135,8 @@ else if ($action == "delete_comment"){
 }
 
 else if ($action =="edit_comment"){
-        $cid = filter_input(INPUT_POST, 'cid');
+    $cid = filter_input(INPUT_POST, 'cid');
+
 
         $comment = get_one_comment($cid);
 
@@ -147,6 +148,7 @@ else if ($action =="change_comment"){
     $cid = filter_input(INPUT_POST, 'cid');
     $message = filter_input(INPUT_POST, 'message');
     $status = filter_input(INPUT_POST, 'status');
+
 
     editComment($cid, $message, $status);
 
@@ -187,6 +189,7 @@ else if ($action == "filter_uncomplete"){
         include('./view/userpage.php');
     
 }
+		
 		
 			
 
