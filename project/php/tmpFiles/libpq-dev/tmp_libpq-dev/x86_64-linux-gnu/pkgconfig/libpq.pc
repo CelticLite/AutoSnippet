@@ -1,0 +1,9 @@
+Name: libpq
+Description: PostgreSQL libpq library
+Url: http://www.postgresql.org/
+Version: 9.6.24
+Requires: 
+Requires.private: 
+Cflags: -I/usr/include/postgresql
+Libs: -L/usr/lib/x86_64-linux-gnu -lpq
+Libs.private: -L/usr/lib/mit-krb5 -L/usr/lib/x86_64-linux-gnu/mit-krb5 -lssl -lcrypto -lgssapi_krb5 -lcrypt -lldap_r
