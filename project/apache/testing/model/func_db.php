@@ -97,7 +97,7 @@ function delete_comment($cid) {
 
 function get_one_comment($cid){
    global $db;
-   $query = 'SELECT message FROM comments
+   $query = 'SELECT * FROM comments
    WHERE cid = :cid';
     $statement = $db->prepare($query);
     $statement->bindValue(':cid', $cid);
@@ -122,17 +122,17 @@ function get_one_comment($cid){
 
 function editComment($cid, $message, $status){
     global $db;
-    $query = 'UPDATE comments SET message = :message AND status = :status
+    $query = 'UPDATE comments SET message = :message, status = :status
               WHERE cid = :cid';
     $statement = $db->prepare($query);
     $statement->bindValue(':cid', $cid);
     $statement->bindValue(':message', $message);
     $statement->bindValue(':status', $status);
-
     $statement->execute();
     $statement->closeCursor();
 
 }
+
 
 
 function get_comments_by_status($status){
