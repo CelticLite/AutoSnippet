@@ -15,7 +15,7 @@
     <!-- Left side bar -->
     <div class="lsidebar">
         <div class="sidebarOption">
-            <h2>Home</h2>
+            <h1>Auto Snippet</h1>
         </div>
 
         <!--<input type="text" placeholder="Search" />-->
