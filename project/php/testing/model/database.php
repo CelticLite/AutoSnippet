@@ -1,6 +1,6 @@
 <?php
 // Set up the database connection
-$dsn = 'pgsql:host=database;dbname=testdb';
+$dsn = 'mysql:host=database;dbname=testdb';
 $username = 'testuser';
 $password = 'Infected42!';
 $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
