@@ -20,8 +20,8 @@ CREATE TABLE goals (
   username VARCHAR(50),
   goalType VARCHAR(50),
   status VARCHAR(50),
-  comment text[],
-  tasks text[],
+  comment text,
+  tasks text,
   PRIMARY KEY (title)
 );
 
@@ -42,20 +42,6 @@ CREATE TABLE comments (
   uid VARCHAR(50),
   comment VARCHAR(50),
   team VARCHAR(50),
-  PRIMARY KEY (uid));
+  PRIMARY KEY (cid));
 
-COPY users
-FROM 'users.csv'
-DELIMITER ','
-CSV HEADER;
-
-COPY goals(title, description, username, goalType, status, comment, tasks )
-FROM 'goals.csv'
-DELIMITER ','
-CSV HEADER;
-
-COPY teams(teamName, manager, member1, member2, member3, member4, member5, member6 )
-FROM 'teams.csv'
-DELIMITER ','
-CSV HEADER;
 
