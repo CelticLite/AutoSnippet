@@ -7,6 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Auto Snippet</title>
     <link rel="stylesheet" href="main.css" />
 </head>
@@ -15,10 +16,11 @@
     <!-- Left side bar -->
     <div class="lsidebar">
         <div class="sidebarOption">
-            <h2>Home</h2>
+            <h1>Auto Snippet</h1>
         </div>
 
- 
+        <!--<input type="text" placeholder="Search" />-->
+
         <br><br><br>
 
 
@@ -44,11 +46,7 @@
             <button type='submit' button class = "newGoal__button">Completed</button>
         </form>
 
-        <div class="lsidebar__input"><br><br>
-
-          
-
-        </div>
+   
     </div>
     <!-- Begin Goals Feed -->
     <div class="goals">
@@ -65,8 +63,8 @@
 
             <div class="goals__input">
 
-                <?php
-                echo $_SESSION['username'];?>
+                <h3>Welcome, <?php
+                echo $_SESSION['username'];?>.</h3>
 
                 <img
                         src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
@@ -77,38 +75,53 @@
 
                 <br>
 
-                <form action="index.php" method="post">
-                    <input type="hidden" name="action" value="change_comment">
+ 
 
-                    <input type="hidden" name="cid"
-                           value="<?php echo $comment['cid']; ?>">
-                    <input type="hidden" name="cid"
-                           value="<?php echo $comment['status']; ?>">
+
 
                     <!--<input type="password" name="password" placeholder="Password" class="input">-->
-                    <input type='hidden' name='uid' value=''>
-			<p>
+           <!-- <p>
+
                     <select id="status" name="status">
                         <option value="Not Completed" data-sort="1" font-color='green'>Not Completed</option>
                         <option value="In Progress" data-sort="2" font-color='yellow'>In Progress</option>
                         <option value="Completed" data-sort="3" font-color='red'>Completed</option>
                     </select>
-			</p>
-                    <?php
+            </p> --> 
 
-                    $comment = get_one_comment($cid);
-                    foreach ($comment as $comm) : ?>
 
-                        <textarea name='message' id='message' cols="140" rows="10">
-				<?php echo ($comm['message']);?>
+            <?php
+
+            $comment = get_one_comment($cid);
+            foreach ($comment as $comm) : ?>
+             <form action="index.php" method="post">
+              
+            <input type="hidden" name="action" value="change_comment">
+
+                    <p><select id="status" name="status">
+                        <option value="Not Completed" data-sort="1" font-color='green'>Not Completed</option>
+                        <option value="In Progress" data-sort="2" font-color='yellow'>In Progress</option>
+                        <option value="Completed" data-sort="3" font-color='red'>Completed</option>
+                    </select></p>
+
+            <input name="cid" type="hidden" id="cid"
+                value="<?php echo ($comm['cid']);?>">
+
+            <input name="uid" id="uid" type="hidden"
+                           value="<?php echo ($comm['uid']);?>">
+
+            <textarea name='message' id='message' cols="140" rows="10" method="post"><?php echo ($comm['message']);?>
             </textarea><br>
 
+           <p> <input type="submit" value="Submit" button class = "newGoal__button"></p><br>
+            </form>
+                 
 
-                    <?php endforeach; ?>
-<p>
-                    <button type='submit' name='submit'>Confirm Edit</button>
-			</p>
-                </form>
+                        <?php endforeach; ?>
+
+           
+
+                
         </div>
         <!-- Goal ends -->
 
@@ -121,6 +134,9 @@
         <!-- this is the div divider line for the foreach comments don't delete the line below!-->
         ____________________________________________________________________________________________________________________________________
         <br>
+
+
+        <!-- Goals feed -->
 
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
             <script type="text/javascript">
@@ -182,7 +198,7 @@
         <!-- Goals feed -->
 
         <form id="form1">
-            <input type="text" id="SearchTxt" />
+            <p><input type="text" id="SearchTxt" />
             <input type="button" id="SearchBtn" value="Search" />
             <input type="button" id="NextBtn" value="Next" />
             <input type="button" id="PreBtn" value="Previous" />
@@ -190,18 +206,20 @@
                 <input type="hidden" name="action" value ="clear">
                 <input type="submit" value="Clear">
             </form>
-        </form>
+        </form></p>
 
             
 
                 <div class = "feed" id="realTimeContents">
+
+        
             <table id="table_example">
                 <table>
                     <tbody>
 
 
                     <?php
-                    $comments = get_comments();
+                    $comments = get_comments($cid);
                     foreach ($comments as $comment) : ?>
                     <div>
 
@@ -210,7 +228,7 @@
                                 <?php echo "Comment ID: ".$comment['cid'];?><br>
                                 <?php echo "Status: ".$comment['status'];?><br>
                                 <?php
-                                        echo "Username: ".$comment['uid'];?><br><br>
+                                echo "User Id: ".$comment['uid']?><br><br>
 
 
 
@@ -268,8 +286,25 @@
                                 </div>
                             </form>
 
+                            <script>
+                                function replyFunction() {
+                                    let text;
+                                    let replyText = prompt("Please enter a reply:", "Reply");
+                                    if (replyText == null || replyText == "") {
+                                        text = "User cancelled the reply.";
+                                    } else {
+                                        text = "Reply " + replyText;
+                                    }
+                                    document.getElementById("replyTextElem").innerHTML = text;
+                                }
+                            </script>
+                            <p id="replyTextElem"></p>
 
 
+
+
+                            <br>
+                            </form>
 
                             </p></div>
                         <!-- this is the div divider line for the foreach comments don't delete the line below!-->
