@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="main.css?version=51">
 </head>
-<body>
+<body style="text-align: center;">
 <div class="wrapper">
     <div class="header">
         <div class="top">
