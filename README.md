@@ -26,7 +26,13 @@ Finally, launch the app by running:
 Navigate to https://localhost on your favorite browser to view AutoSnippet from the machine hosting the docker container. To visit the app from another machine, navigate to the ip address of the machine hosting the docker container in your favorite browser.  
 
 ### Notes 
-- On most modern browsers, an SSL warning will display the first time you visit the app, ignore this display and continue. 
-- As always, all are welcome to fork this repository and modify it for your own use.  
+- On most modern browsers, an SSL warning will display the first time you visit the app, ignore this display and continue. (if you want to fix this, view issue #2)
+- As always, all are welcome to fork this repository and modify it for your own use. 
+
+### The Devs 
+- GZT11 (Zach)
+- ImStadt99 (Ian)
+- MDostert1 (Mike) 
+- CelticLite (RP) (Twitter)[https://twitter.com/CelticLite]
 
 
