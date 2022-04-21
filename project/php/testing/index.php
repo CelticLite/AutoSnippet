@@ -1,6 +1,6 @@
 <?php
-require('./model/database.php');
-require('./model/func_db.php');
+require_once('./model/database.php');
+require_once('./model/func_db.php');
 
 $lifetime = 60 * 60 * 24 * 365; //1 year lifetime for cookie
 session_set_cookie_params($lifetime, '/');

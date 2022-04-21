@@ -14,14 +14,22 @@ services:
     depends_on:
       - db
   db:
-    image: postgres
+    image: mysql
+    container_name: database
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      POSTGRES_PASSWORD: Infected42!
-      POSTGRES_USER: testuser
-      POSTGRES_DB: testdb
+      MYSQL_ROOT_PASSWORD: Infected42!
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: Infected42!
+    networks:
+      - backend
+  adminer:
+    image: adminer
+    restart: always
     ports:
-      - "5432:5432"
+      - 8080:8080
     networks:
       - backend
 networks:

@@ -43,7 +43,7 @@
 				<div class="line"></div>
 			</div>
 
-		<form action="index.php" method="post" id="short_label_form">
+		<form action="../index.php" method="post" id="short_label_form">
 		<input type="hidden" name="action" value="show_register_page">
 
 		<p>Don't have an account?</p> 
