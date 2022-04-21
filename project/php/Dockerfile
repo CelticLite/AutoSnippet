@@ -1,6 +1,8 @@
-FROM php:7.3-fpm
-RUN apt-get update
-RUN apt-get install -y libpq-dev
-RUN docker-php-ext-install pdo pdo_pgsql
-RUN docker-php-ext-install pgsql
-COPY php.ini-development /usr/local/etc/php/php.ini
+FROM php:7.2-apache
+RUN apt-get update && apt-get upgrade -y\
+ && docker-php-ext-install pdo_mysql \
+ && echo "ServerName localhost:80" >> /etc/apache2/apache2.conf
+COPY ./testing /var/www/html
+EXPOSE 80
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+
