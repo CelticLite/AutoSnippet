@@ -8,7 +8,7 @@
 
 
 </head>
-<body>
+<body style="text-align: center;">
 <div class="wrapper">
 	<div class="header">
 		<div class="top">
