@@ -14,7 +14,7 @@ To install, first clone this repository by running:
 
 		git clone https://github.com/CelticLite/AutoSnippet.git 
 
-Next move into the AutoSnippet directory and build the docker images provided: 
+Next move into the project directory inside of AutoSnippet and build the docker images provided using: 
 
 		docker-compose build 
 		docker-compose build --no-cache  ## use this if you have built a previous version 
