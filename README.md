@@ -23,7 +23,7 @@ Finally, launch the app by running:
 
 		docker-compose up 
 
-Navigate to https://localhost on your favorite browser to view AutoSnippet from the machine hosting the docker container. To visit the app from another machine, navigate to the ip address of the machine hosting the docker container in your favorite browser.  
+Navigate to https://localhost:8000 on your favorite browser to view AutoSnippet from the machine hosting the docker container. To visit the app from another machine, navigate to the ip address of the machine hosting the docker container in your favorite browser.  
 
 ### Notes 
 - On most modern browsers, an SSL warning will display the first time you visit the app, ignore this display and continue. (if you want to fix this, view issue #2)
