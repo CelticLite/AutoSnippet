@@ -33,6 +33,6 @@ Navigate to https://localhost on your favorite browser to view AutoSnippet from 
 - GZT11 (Zach)
 - ImStadt99 (Ian)
 - MDostert1 (Mike) 
-- CelticLite (RP) (Twitter)[https://twitter.com/CelticLite]
+- CelticLite (RP) [Twitter](https://twitter.com/CelticLite)
 
 
