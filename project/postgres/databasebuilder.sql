@@ -8,7 +8,7 @@ CREATE TABLE users (
   state VARCHAR(2), 
   zip integer,
   country VARCHAR(2),
-  phone integer,
+  phone VARCHAR(15),
   email VARCHAR(255),
   PRIMARY KEY (username)
 );
