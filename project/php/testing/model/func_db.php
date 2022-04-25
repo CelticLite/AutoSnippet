@@ -122,7 +122,7 @@ function get_one_comment($cid){
 
 function editComment($cid, $message, $status){
     global $db;
-    $query = 'UPDATE comments SET message = :message AND status = :status
+    $query = 'UPDATE comments SET message = :message, status = :status
               WHERE cid = :cid';
     $statement = $db->prepare($query);
     $statement->bindValue(':cid', $cid);
