@@ -17,15 +17,15 @@ if ($action === NULL) {
 if($action == 'check_login'){
 
     if(isset($_SESSION['username'])){
-    $email = $_SESSION['username'];
+        $email = $_SESSION['username'];
 
-    $comments = get_comments();
+        $comments = get_comments();
 
-    include('./view/userpage.php');
-}
+        include('./view/userviewV4.php');
+    }
 
-        else{include('./view/login.php');}
-      
+    else{include('./view/login.php');}
+
 }
 
 if ($action == 'show_login') {
@@ -38,39 +38,39 @@ else if ($action == 'show_register_page') {
 
 else if ($action == 'show_userpage') {
 
-	$comments = get_comments();
-    include('./view/userpage.php');
+    $comments = get_comments();
+    include('./view/userviewV4.php');
 }
 
 else if ($action == 'login_user'){
 
     if(isset($_POST['login'])){
         $username = $_POST['username'];
-        $password = $_POST['password'];    
+        $password = $_POST['password'];
         if($username != NULL && $password !=NULL){
-        setcookie('username', $username);
-    }
-    
-    $_SESSION['username'] = $username;
+            setcookie('username', $username);
+        }
+
+        $_SESSION['username'] = $username;
     }
 
     $username = filter_input(INPUT_POST, 'username');
     $password = filter_input(INPUT_POST, 'password');
-    
+
     $user1 = get_user($username);
     $pass1 = get_pass($password);
 
 
     if ($pass1 == NULL || $pass1 == FALSE ) {
         $error = "Incorrect password.";
-        include('./errors/error.php');
-    } else { 
+        include('../errors/error.php');
+    } else {
         if($user1 == NULL  || $user1 == FALSE){
             $error = "Incorrect username.";
-            include('./errors/error.php');
+            include('../errors/error.php');
         } else {
             if ($user1 != NULL && $pass1 !=NULL) {
-                include('./view/userpage.php');
+                include('./view/userviewV4.php');
             } else {
                 $error = "Incorrect login.";
                 include('./errors/error.php');
@@ -98,14 +98,14 @@ else if ($action == 'add_user') {
     if ($username == NULL || $username == FALSE) {
         $error = "Invalid username data. Check all fields and try again.";
         include('./errors/error.php');
-    } 
-    else { 
-        add_user($username, $password, $fname, $lname,  $email, $phone, $address, $city, $state, $zip, $country); 
-
-        include('./view/login.php');
-    
     }
-}  
+    else {
+        add_user($username, $password, $fname, $lname,  $email, $phone, $address, $city, $state, $zip, $country);
+
+        include('login.php');
+
+    }
+}
 
 
 else if ($action == "add_comment"){
@@ -118,28 +118,28 @@ else if ($action == "add_comment"){
 
     add_comment($uid, $message, $status);
     $action == NULL;
-    include('./view/userpage.php');
+    include('./view/userviewV4.php');
 
 }
 
 
 else if ($action == "delete_comment"){
-	$cid = filter_input(INPUT_POST, 'cid');
+    $cid = filter_input(INPUT_POST, 'cid');
 
     delete_comment($cid);
 
+    //header("Location: .");
+    include('./view/userviewV4.php');
 
-    include('./view/userpage.php');  
 
-	
 }
 
 else if ($action =="edit_comment"){
-        $cid = filter_input(INPUT_POST, 'cid');
+    $cid = filter_input(INPUT_POST, 'cid');
 
-        $comment = get_one_comment($cid);
+    $comment = get_one_comment($cid);
 
-        include('./view/editcommentV2.php');
+    include('./view/editcomment.php');
 
 }
 
@@ -151,40 +151,38 @@ else if ($action =="change_comment"){
     editComment($cid, $message, $status);
 
 
-        include('./view/userpage.php'); 
+    include('./view/userviewV4.php');
 
 }
 
 else if ($action =="return_login"){
-        include('./view/login.php');
+    include('./view/login.php');
 
 }
 
 else if ($action == "logout_user"){
     session_destroy();
     include('./view/login.php');
-	
-	}
 
-else if ($action == "filter_all"){
-    include('./view/userpage.php');
 
-}
+}else if ($action == "filter_all"){
+    include('./view/userviewV4.php');
 
-else if ($action == "filter_uncomplete"){
-    //get_comments_by_status("Not Complete")
+}else if ($action == "filter_uncomplete"){
     include('./view/userpagefilteruncomplete.php');
 
 }else if ($action == "filter_in_progress"){
-    //get_comments_by_status("In Progress")
     include('./view/userpagefilterinprogress.php');
 
-}else if ($action == "filter_done"){
-    //get_comments_by_status("Done")
+}else if ($action == "filter_done") {
     include('./view/userpagefilterdone.php');
+
+
+}else if ($action == "clear"){
+        include('./view/userviewV4.php');
     
+        
+
 }
-		
-			
 
 
