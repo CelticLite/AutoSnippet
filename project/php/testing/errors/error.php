@@ -1,16 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Auto Anippet Login Page</title>
 
-    <link rel="stylesheet" type="text/css" href="main.css?version=51">
+    <link rel="stylesheet" type="text/css" href="./view/main.css">
 </head>
 <body style="text-align: center;">
 <div class="wrapper">
     <div class="header">
         <div class="top">
-            <div class="container1">
+            <div class="container1" >
                 <div class="logo">
                     <img src="ASLogoV1.1.jpeg" alt="AutoSnippet" style="width: 200px; height: 150px;">
                 </div>
@@ -30,10 +31,10 @@
                 <p>You must login before you can use Auto Snippet:</p><br>
 
                 <label for="username"><b>Username:</b></label>
-                <input type="text" name="username" required/>
+                <input type="text" name="username" placeholder ="Username" required/>
 
                 <label for="password"><b>Password:</b></label>
-                <input type="password" name="password" required/>
+                <input type="password" name="password" placeholder ="Password" required/>
                 <input type="submit" name="login" id="login" value="submit" />
 
             </form>
