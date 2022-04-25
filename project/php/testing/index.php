@@ -63,11 +63,11 @@ else if ($action == 'login_user'){
 
     if ($pass1 == NULL || $pass1 == FALSE ) {
         $error = "Incorrect password.";
-        include('../errors/error.php');
+        include('./errors/error.php');
     } else {
         if($user1 == NULL  || $user1 == FALSE){
             $error = "Incorrect username.";
-            include('../errors/error.php');
+            include('./errors/error.php');
         } else {
             if ($user1 != NULL && $pass1 !=NULL) {
                 include('./view/userpageV4.php');
@@ -150,6 +150,8 @@ else if ($action =="change_comment"){
 
     editComment($cid, $message, $status);
 
+    //add_comment($uid, $message, $status);
+   // delete_comment($cid);
 
     include('./view/userpageV4.php');
 
@@ -184,4 +186,6 @@ else if ($action == "logout_user"){
         
 
 }
+
+
 
