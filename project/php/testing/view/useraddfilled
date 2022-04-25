@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Auto Snippet Login Page</title>
-    <link rel="stylesheet" type="text/css" href="main.css?version=51">
+    <link rel="stylesheet" type="text/css" href="./view/main.css">
 </head>
 <body>
 
