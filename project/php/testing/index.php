@@ -33,7 +33,7 @@ if ($action == 'show_login') {
 }
 
 else if ($action == 'show_register_page') {
-    include('./view/useradd.php');
+    include('./view/useraddfilled.php');
 }
 
 else if ($action == 'show_userpage') {
@@ -102,7 +102,7 @@ else if ($action == 'add_user') {
     else {
         add_user($username, $password, $fname, $lname,  $email, $phone, $address, $city, $state, $zip, $country);
 
-        include('login.php');
+        include('./view/login.php');
 
     }
 }
