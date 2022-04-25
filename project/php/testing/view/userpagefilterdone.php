@@ -2,7 +2,6 @@
 <html lang="en">
 
 
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,18 +32,13 @@
         <form action="index.php" method="post">
             <input type="hidden" name="action" value ="filter_uncomplete">
 
+
             <button type='submit' button class = "newGoal__button">Not Complete</button>
         </form>
         <form action="index.php" method="post">
             <input type="hidden" name="action" value ="filter_in_progress">
 
-            <!--<select id="filterfeed" name="filterfeed">
-                <option value="all" data-sort="0" font-color='red'>All</option>
-                <option value="notcompleted" data-sort="1" font-color='green'>Not Completed</option>
-                <option value="inprogress" data-sort="2" font-color='yellow'>In Progress</option>
-                <option value="completed" data-sort="3" font-color='red'>Completed</option>
-            </select>
-            <br>-->
+
             <button type='submit' button class = "newGoal__button">In Progress</button>
         </form>
         <form action="index.php" method="post">
@@ -53,7 +47,6 @@
 
             <button type='submit' button class = "newGoal__button">Completed</button>
         </form>
-
 
     </div>
     <!-- Begin Goals Feed -->
@@ -71,8 +64,9 @@
 
             <div class="goals__input">
 
-                <h3> Welcome, <?php
-                    echo $_SESSION['username'];?>.</h3>
+                <h3>Welcome, <?php
+                    echo $_SESSION['username'];?>.
+                </h3>
 
                 <img
                         src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
@@ -87,8 +81,7 @@
                     <input type="hidden" name="action" value="add_comment">
                     <!-- NEED TO GRAB USER INFO -->
                     <input type='hidden' name='uid' value='<?php
-                    echo $_SESSION['username'];?>
-'>
+                    echo $_SESSION['username'];?>'>
                     <p>
                         <select id="status" name="status">
                             <option value="Not Completed" data-sort="1" font-color='green'>Not Completed</option>
@@ -113,8 +106,8 @@
 
 
 
-        <h2>Not Complete Goals:</h2><br>
 
+        <h2>Completed Goals:</h2><br>
         <!-- this is the div divider line for the foreach comments don't delete the line below!-->
         ____________________________________________________________________________________________________________________________________
         <br>
@@ -199,7 +192,7 @@
 
 
                     <?php
-                    $comments = get_notcomplete_comments();
+                    $comments = get_completed_comments();
                     foreach ($comments as $comment) : ?>
                     <div>
 
@@ -209,6 +202,7 @@
                                 <?php echo "Status: ".$comment['status'];?><br>
                                 <?php
                                 echo "Username: ".$comment['uid'];?><br><br>
+
 
 
 
@@ -256,8 +250,6 @@
                                     </div>
                                 </div>
                             </form>
-
-
 
 
 
