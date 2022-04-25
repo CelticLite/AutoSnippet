@@ -29,10 +29,10 @@
                 <p>You must login before you can use Auto Snippet:</p><br>
 
                 <label for="username"><b>Username:</b></label>
-                <input type="text" name="username" required/>
+                <input type="text" name="username" placeholder ="Username" required/>
 
                 <label for="password"><b>Password:</b></label>
-                <input type="password" name="password" required/>
+                <input type="password" name="password" placeholder ="Passqord" required/>
                 <input type="submit" name="login" id="login" value="submit" />
 
             </form>
