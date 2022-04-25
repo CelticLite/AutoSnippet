@@ -32,7 +32,7 @@
                 <input type="text" name="username" placeholder ="Username" required/>
 
                 <label for="password"><b>Password:</b></label>
-                <input type="password" name="password" placeholder ="Passqord" required/>
+                <input type="password" name="password" placeholder ="Password" required/>
                 <input type="submit" name="login" id="login" value="submit" />
 
             </form>
