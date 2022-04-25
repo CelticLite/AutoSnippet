@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Auto Anippet Login Page</title>
 
-    <link rel="stylesheet" type="text/css" href="main.css?version=51">
+    <link rel="stylesheet" type="text/css" href="./view/main.css">
 </head>
 <body style="text-align: center;">
 <div class="wrapper">
