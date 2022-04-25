@@ -21,7 +21,7 @@ if($action == 'check_login'){
 
         $comments = get_comments();
 
-        include('./view/userviewV4.php');
+        include('./view/userpageV4.php');
     }
 
     else{include('./view/login.php');}
@@ -39,7 +39,7 @@ else if ($action == 'show_register_page') {
 else if ($action == 'show_userpage') {
 
     $comments = get_comments();
-    include('./view/userviewV4.php');
+    include('./view/userpageV4.php');
 }
 
 else if ($action == 'login_user'){
@@ -70,7 +70,7 @@ else if ($action == 'login_user'){
             include('../errors/error.php');
         } else {
             if ($user1 != NULL && $pass1 !=NULL) {
-                include('./view/userviewV4.php');
+                include('./view/userpageV4.php');
             } else {
                 $error = "Incorrect login.";
                 include('./errors/error.php');
@@ -118,7 +118,7 @@ else if ($action == "add_comment"){
 
     add_comment($uid, $message, $status);
     $action == NULL;
-    include('./view/userviewV4.php');
+    include('./view/userpageV4.php');
 
 }
 
@@ -129,7 +129,7 @@ else if ($action == "delete_comment"){
     delete_comment($cid);
 
     //header("Location: .");
-    include('./view/userviewV4.php');
+    include('./view/userpageV4.php');
 
 
 }
@@ -139,7 +139,7 @@ else if ($action =="edit_comment"){
 
     $comment = get_one_comment($cid);
 
-    include('./view/editcomment.php');
+    include('./view/editcommentV2.php');
 
 }
 
@@ -151,7 +151,7 @@ else if ($action =="change_comment"){
     editComment($cid, $message, $status);
 
 
-    include('./view/userviewV4.php');
+    include('./view/userpageV4.php');
 
 }
 
@@ -166,7 +166,7 @@ else if ($action == "logout_user"){
 
 
 }else if ($action == "filter_all"){
-    include('./view/userviewV4.php');
+    include('./view/userpageV4.php');
 
 }else if ($action == "filter_uncomplete"){
     include('./view/userpagefilteruncomplete.php');
@@ -179,10 +179,9 @@ else if ($action == "logout_user"){
 
 
 }else if ($action == "clear"){
-        include('./view/userviewV4.php');
+        include('./view/userpageV4.php');
     
         
 
 }
-
 
