@@ -97,7 +97,7 @@ function delete_comment($cid) {
 
 function get_one_comment($cid){
    global $db;
-   $query = 'SELECT message FROM comments
+   $query = 'SELECT * FROM comments
    WHERE cid = :cid';
     $statement = $db->prepare($query);
     $statement->bindValue(':cid', $cid);
