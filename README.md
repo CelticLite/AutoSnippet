@@ -27,6 +27,7 @@ Navigate to https://localhost:8000 on your favorite browser to view AutoSnippet 
 
 ### Notes 
 - On most modern browsers, an SSL warning will display the first time you visit the app, ignore this display and continue. (if you want to fix this, view issue #2)
+- Also, be sure to initialize the SQL database before you use the app.  
 - As always, all are welcome to fork this repository and modify it for your own use. 
 
 ### The Devs 

@@ -1,2 +1,2 @@
-Username, password, team, fname, lname, address, city, state, zip, country, phone, email  
-kittenmittens, password123, teamC, Joey, Smith, 123 Main St, Pottersville, NY, 39483, US, 5488928261, kittenlvr@gmail.com  
+username, password, fname, lname, address, city, state, zip, country, phone, email  
+kittenmittens, password123, Joey, Smith, 123 Main St, Pottersville, NY, 39483, US, 5488928261, kittenlvr@gmail.com  
